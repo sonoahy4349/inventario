@@ -1,0 +1,163 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    width: 630px;
+    height: 735.362px;
+    border-radius: 24px;
+    border: 0.3px solid #B9B9B9;
+    background: #FFF;
+
+}
+
+.form-container{
+    display:grid;
+    place-items: center;
+    width: 516px;
+    height: 556px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+h2{
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+}
+
+p{
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.064px;
+    opacity: 0.8;
+}
+
+.form-imput{
+    width: 516px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #D8D8D8;
+    background: #F1F4F9;
+}
+
+.form-input-container{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr; /* Ajusta según necesites */
+    gap: 7px; /* Reduce el espacio entre los elementos */
+    place-items: start;
+    text-align: start;
+    margin: bottom 10px;
+    width: 516px;
+    height: 145px;
+    
+}
+
+.input-per{
+
+    background-color: #D8D8D8; /* Color de fondo */
+    border: none; /* Quita las líneas del borde */
+    outline: none; /* Quita el borde al hacer clic */
+    padding: 3px;
+    font-size: 22px;
+    text-align: left;
+    width: 516px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #D8D8D8;
+    background: #F1F4F9; /* Alinea el texto a la izquierda */
+}
+
+
+
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1440px;
+    height: 1070px;
+    flex-shrink: 0;
+    background: #4880FF;
+}
+
+.form-group{
+    margin: 0px;
+
+}
+
+.texto{
+    margin-bottom: 5px;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.064px;
+    opacity: 0.8;
+}
+
+
+.login-btn{
+    display: grid;
+    place-content: center;
+    width: 280px;
+    height: 56px;
+    margin:auto;
+    border-radius: 8px;
+    opacity: 0.9;
+    background: #4880FF;
+    color: #FFF;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.071px;
+
+}
+
+/* stilo navigation bar */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.sidebar {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background: #FFF;
+  border-right: 1px solid #D8D8D8;
+
+}
+
+
+.sidebar .image-text {
+  width: 12px;
+  border-radius: 6px;
+
+
+}

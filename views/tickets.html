@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="database" href="./conexion.php">
+        <link rel="stylesheet" href="../style/dash.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+ 
+  <aside class="sidebar">
+
+    <ul class="sidebar-list">
+
+      <li class="sidebar-element">
+        
+        <div class="sidebar-hide">
+          <img class="sidebar-icono sidebar-icono--logo" src="../img/logo2.PNG" alt="Logo" >
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/tickets.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Tickets</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/estadisticas.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Estadisticas</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/reportes.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Reportes</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/equipos.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Equipos</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/departamentos.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Departamentos</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element">
+        <img src="../assets/usuarios.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Usuarios</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element sidebar-footer--ele">
+        <img src="../assets/configuracion.svg" class="sidebar-icono" alt="Logo">
+        <div class="sidebar-text">
+          <p>Configuracion</p>
+        </div>
+      </li>
+
+      <li class="sidebar-element" >
+        <img src="../assets/cerrar-sesion.svg" class="sidebar-icono red-hover" alt="Logo">
+        <div class="sidebar-text">
+          <p>Cerrar Sesión</p>
+        </div>
+      </li>
+    </ul>
+  </aside>
+
+  <nav>
+    <div class="navbar">
+      <ul class="navbar-list">
+
+        <li class="navbar-element nav-right">
+          <img src="../assets/menu.svg" class="navbar-icono" alt="Logo">
+          <input type="text" class="navbar-input" placeholder="Buscar...">
+        </li>
+
+        <li class="navbar-element nav-left">
+          <img src="../assets/equipos.svg" class="navbar-icono" alt="Logo">
+        </li>
+
+        <li class="navbar-element ">
+          <div class="navbar-text">
+            <p><b>Nombre de usuario</b></p>
+            <p>Rol</p>
+          </div>
+          <img src="../img/hombre.png" class="navbar-icono navbar-icono--logo" alt="Logo">
+        </li>
+
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <header class="main-header">
+      <h2>Tickets</h2>
+    </header>
+
+    <div class="main-content">
+
+      <div class="filter">
+
+      <button class="filter-btn">+ Crear Ticket</button>
+
+      <ul class="filter-list">
+        <h5 class="list-header">Mi espacio</h5>
+
+        <li class="filter-element">
+          <img src="../assets/cupon.svg" class="main-filter-icono" alt="Logo">
+          <p>Todos</p>
+          <p class="filter-number">99+</p>
+        </li>
+
+        <li class="filter-element">
+          <img src="../assets/estrella.svg" class="main-filter-icono" alt="Logo">
+          <p>Guardados</p>
+          <p class="filter-number">99+</p>
+        </li>
+
+        <li class="filter-element">
+          <img src="../assets/pendiente.svg" class="main-filter-icono" alt="Logo">
+          <p>Pendientes</p>
+          <p class="filter-number">99+</p>
+        </li>
+
+        <li class="filter-element">
+          <img src="../assets/resuelto.svg" class="main-filter-icono" alt="Logo">
+          <p>Resueltos</p>
+          <p class="filter-number">99+</p>
+        </li>
+
+        <li class="filter-element">
+          <img src="../assets/papelera.svg" class="main-filter-icono" alt="Logo">
+          <p>Papelera</p>
+          <p class="filter-number">99+</p>
+        </li>
+
+        <h5 class="list-header">Etiquetas</h5>
+
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox1">
+          <label for="checkbox1" class="checkbox-label">Resueltos</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox2">
+          <label for="checkbox2" class="checkbox-label">Abiertos</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox3">
+          <label for="checkbox3" class="checkbox-label">Pendientes</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox4">
+          <label for="checkbox4" class="checkbox-label">######</label>
+        </li>
+      </ul>
+
+      <a href="#" class="filter-link">+ Crear una nueva etiqueta</a>
+    </div>
+    </div>
+   
+  </div>
+ 
+</body>
+</html>

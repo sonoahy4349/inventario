@@ -1,0 +1,144 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+    background-color: #333232
+}
+
+/* Contenedor principal */
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 521px;
+    height: 358px;
+    flex-shrink: 0;
+    border-radius: 26px;
+    background: #FFF;
+    box-shadow: 0px 13px 61px 0px rgba(169, 169, 169, 0.37);
+    }
+
+
+/* Contenedor del modal */
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 20px;
+    height: 100%;
+ }
+
+/* Estilo del encabezado del modal */
+.modal-header{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    color: #202224;
+    font-family: 'nunito sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    opacity: 0.85;
+}
+
+.close-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;          /* elimina el borde */
+    box-shadow: none;      /* elimina cualquier sombra */
+    outline: none;
+    cursor: pointer;
+    
+}
+
+/* Estilo del body del modal */
+.modal-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    width: 480px;
+    height: 100%;
+}
+
+/* Estilo del form */
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+/* Estado normal —la pill es el label */
+.pill-text{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:10px 5px;
+  width:147px;
+  height:34px;
+  border-radius:17px;
+  border:0.6px solid #979797;
+  color:#202224;
+  font:600 17px/1 "Nunito Sans";
+  opacity:.85;
+  cursor:pointer;
+  user-select:none;
+  transition:background .2s ease,border-color .2s ease;
+}
+
+/* Cuando el checkbox está marcado, se estiliza su label */
+.pill-input:checked + .pill-text{
+  background:#2f66ff;
+  border-color:#2f66ff;
+  color:#fff;
+}
+
+/* linea divisoria */
+.divider{
+  width:100%;
+  height:1px;               /* grosor de la línea          */
+  background:#979797;       /* color                       */
+  opacity:.5;               /* transparencia               */
+  border:0;                 /* elimina borde si es <hr>    */
+  margin:8px 0;            /* espacio arriba/abajo        */
+}
+
+/* contenedor del botón de aplicar*/
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.btn{
+width: 129px;
+height: 34px;
+flex-shrink: 0;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}

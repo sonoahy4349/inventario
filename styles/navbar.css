@@ -1,0 +1,78 @@
+body{
+    background-color: #F5F6FA;
+}
+
+nav{
+    width: 100%vh;
+    height: 65px;
+    background: #ffff;
+}
+
+.navbar-contenedor{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px; 
+    align-items: flex-start;
+    align-items: center;
+    height: auto;
+
+}
+
+.navbar-menu-logo{
+    width: 30px;
+    height: 26px;
+    }
+
+.navbar-busqueda{
+    width: 388px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 19px;
+    border: 0.6px solid #D5D5D5;
+    background: #F5F6FA;
+    margin: 0px 15px;
+    color: #202224;
+    text-align: start;
+    font-family: "Nunito Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+.navbar-usuario-info{
+     align-items: flex-end;
+
+}
+.navbar-avatar-img{
+    width: 40px;
+    height: 40px;
+
+}
+
+
+.navbar-usuario-nombre{
+    margin: 0px 8px 2px 5px;
+    color: #404040;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.navbar-usuario-cargo{
+    margin: 0px 8px 5px 5px;
+    color: #565656;
+    font-family: "Nunito Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: end;
+}
+
+.final{
+    margin-left: auto;
+}

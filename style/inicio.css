@@ -1,0 +1,305 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 100vh;
+    margin-top: 70px;   /* Altura de la navbar */
+    margin-left: 240px; /* Ancho de la sidebar */
+    padding: 1rem;      /* Espacio interno opcional para que respire */
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+.card-header{
+    padding-bottom: 15px;
+    color: #202224bb;
+}
+
+.titulo{
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+}
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0;
+    flex-direction: row;
+    width: 1200px;
+}
+
+/* CARD EQUIPOS */
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 720px;
+    height: 163px;
+    flex-shrink: 0;
+    margin: 20px 20px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+    /* Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto flotante al hacer hover */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-grafica{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 720px;
+    height: 500px;
+    flex-shrink: 0;
+    margin: 20px 20px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+    /* Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto flotante al hacer hover */
+.card-grafica:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-movimientos{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 400px;
+    height: 500px;
+    flex-shrink: 0;
+    margin: 20px 20px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+    /* Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto flotante al hacer hover */
+.card-movimientos:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.big-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 4);
+    height: 90px;
+}
+
+/* CARD USUARIOS */
+.card-usuarios{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 400px;
+    height: 163px;
+    flex-shrink: 0;
+    margin: 20px 20px;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+    /* Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-usuarios:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.box-usuarios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 2);
+    height: 90px;
+}
+
+.separador{
+    border-left: 2px solid #65656533;   /* gris (#656565) */
+}
+
+.card-avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+}
+
+.nombre{
+
+    color: #202224;
+    text-align: start;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.057px;  
+    opacity: 0.9;  
+}
+
+.cantidad{
+    padding: 0px 10px;
+    color: #202224;
+    text-align: end;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.05px;
+    opacity: 0.6;
+}
+
+.correo{
+    color: #202224;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.05px;
+    opacity: 0.9;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.en-uso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 4.5px;
+    background: #00b69b3d;  
+    color: #018b77;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.disponible{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 4.5px;
+    background: #6226ef2c;
+    color: #6226ef;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mantenimiento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 4.5px;
+    background: #ef37263a;  
+    color: #EF3826;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
