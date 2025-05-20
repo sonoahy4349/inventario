@@ -1,14 +1,7 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 100vh;
-    background-color: #333232
-}
 
-/* Contenedor principal */
-.contenedor{
+.modal{
     display: flex;
+    position: fixed;
     flex-direction: column;
     justify-content: start;
     width: 521px;
@@ -17,18 +10,24 @@ body{
     border-radius: 26px;
     background: #FFF;
     box-shadow: 0px 13px 61px 0px rgba(169, 169, 169, 0.37);
+    opacity: 1;
+    transition: opacity 0.3s;
+    margin-top: 130px;
+    margin-left: 160px;
     }
 
 
 /* Contenedor del modal */
-.modal{
+.modal-contenedor{
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
     padding: 20px;
     height: 100%;
+    position: relative;
  }
+
 
 /* Estilo del encabezado del modal */
 .modal-header{
@@ -142,3 +141,9 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none; /* no permite hacer clic ni interacción */
+}
+

@@ -20,11 +20,45 @@
     letter-spacing: -0.114px;
 }
 
+.header{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    width: 350px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+
+
+.btn-agregar{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+margin-left: auto;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
+}
+
 /* estilo para los filtros de la tabla*/
 .filtros{
     display: flex;
     flex-direction: row;
-    width: 750px;
+    width: 85%;
     height: 70px;
     flex-shrink: 0;
     border-radius: 10px;
@@ -43,6 +77,7 @@
 }
 
 .filtro-elementos{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +86,16 @@
 
 .filtro-texto{
   color: #202224;
+  font-family: "Nunito Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0px 10px;
+}
+
+.filtro-texto-rojo{
+  color: #d33232;
   font-family: "Nunito Sans";
   font-size: 20px;
   font-style: normal;
@@ -259,4 +304,11 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
+
+
+
+.modal-show {
+  display: none;
+}
+
 

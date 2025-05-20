@@ -6,39 +6,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="../style/dash.css">
     <link rel="stylesheet" href="../style/equipos.css">
+    <link rel="stylesheet" href="../style/modal-filtro-equipo.css">
+ 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-    <script>
-      // Get the modal
-var modal = document.getElementById("m-equipo");
-
-// Get the button that opens the modal
-var btn = document.getElementById("f-equipo");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-    </script>
-
-
 
   </head>
 
@@ -46,6 +19,7 @@ window.onclick = function(event) {
     <?php include_once '../include/navigation.php'; ?>
 
     <div class="contenedor">
+
         <div class="header">
           <h1 class="titulo">Equipos</h1>
         </div>
@@ -71,6 +45,9 @@ window.onclick = function(event) {
              <button id="f-estado" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
 
             <img class="reiniciar-filtro" src="../img/reiniciar.png" alt="flecha">
+            <p class="filtro-texto-rojo">Reiniciar filtro</p>
+
+            <button class="btn-agregar" id="btn-agregar">+ Agregar equipo</button>
           </div>
 
         </div>
@@ -265,8 +242,31 @@ window.onclick = function(event) {
               </div>
             </div>
           </main>
+
+          <?php include_once '../include/modal-filtro-equipo.php'; ?>
+
     </div>
 
- 
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal');
+    const openButton = document.getElementById('f-equipo');
+    const closeButton = document.getElementById('close-modal');
+
+    // Mostrar el modal
+    openButton.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+
+    // Ocultar el modal
+    closeButton.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  });
+</script>
+
+
+
 </body>
+<script src="../js/equipo.js"></script>
 </html>
