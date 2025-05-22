@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../style/dash.css">
-    <link rel="stylesheet" href="../style/equipos.css">
-    <link rel="stylesheet" href="../style/modal-filtro-equipo.css">
-    <link rel="stylesheet" href="../style/equipos-form.css">
- 
+    <title>Equipos</title>
+    <link rel="stylesheet" href="../style/dash.css"> <!-- Estilos de navbar y sidebar -->
+    <link rel="stylesheet" href="../style/equipos.css"> <!-- Estilos de filtros y tablas -->
+    <link rel="stylesheet" href="../style/modal-filtro-equipo.css"> <!-- Estilo de modales  -->
+    <link rel="stylesheet" href="../style/equipos-form.css"> <!-- Estilo de formulario  -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +18,13 @@
 <body>
     <?php include_once '../include/navigation.php'; ?>
 
-    <div class="contenedor">
+    <div class="contenedor"> <!-- Cuerpo contenedor de todo -->
 
-        <div class="header">
+        <div class="header"> <!-- Titulo de la pagina -->
           <h1 class="titulo">Equipos</h1>
         </div>
 
-        <div class="filtros">
+        <div class="filtros"> <!-- Cuerpo de los filtros -->
           <div class="flitro-contenedor-icono">
             <img class="filtro-icono" src="../img/filtro.png" alt="Filtro" width="28px" height="28px">
           </div>
@@ -54,253 +53,98 @@
 
         </div>
 
-          <main class="tabla-principal">
-            <div class="tabla-wrapper">
+<?php
+require_once '../models/equipos-controller.php'; // SOLUCIÓN: Usar la función que SÍ funciona
 
-              <table class="tabla-header">
-                <thead>
-                  <tr>
-                    <th class="th">ID</th>
-                    <th class="th">Equipo</th>
-                    <th class="th">Marca</th>
-                    <th class="th">Modelo</th>
-                    <th class="th">No. de serie</th>
-                    <th class="th">Estado</th>
-                    <th class="th">Acción</th>
-                  </tr>
-                </thead>
-              </table>
+$equipos = obtenerEquiposAlternativa(); // Usar la función alternativa que crea su propia conexión
 
-              <div class="tabla-scroll">
-                <table class="tabla-body">
-                  <tbody>
-                    <tr class="tr">
-                      <th>1</th> 
-                      <td>Laptop</td>
-                      <td>Dell</td>
-                      <td>XPS 13</td>
-                      <td>123456789</td>
-                      <td class="Estado"><span class="disponible">Disponible</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+echo "<!-- DEBUG: Número de equipos encontrados: " . count($equipos) . " -->"; // DEBUG: Mostrar información para debugging
+if (empty($equipos)) {
+    echo "<!-- DEBUG: No se encontraron equipos. Verificar base de datos y tablas -->";
+}
+?>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+  <main class="tabla-principal"> <!-- Cuerpo del contenedor de la tabla entera -->
+    <div class="tabla-wrapper">
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+      <table class="tabla-header"> <!-- Encabezado de la tabla (sin cambios) -->
+        <thead>
+          <tr>
+            <th class="th">ID</th>
+            <th class="th">Equipo</th>
+            <th class="th">Marca</th>
+            <th class="th">Modelo</th>
+            <th class="th">No. de serie</th>
+            <th class="th">Estado</th>
+            <th class="th">Acción</th>
+          </tr>
+        </thead>         
+      </table>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+    <div class="tabla-scroll"> <!-- Cuerpo de la tabla con datos dinámicos -->
+      <table class="tabla-body">
+        <tbody>
+                
+<?php 
+  // Verificar si hay equipos para mostrar
+  if (!empty($equipos))  {
+  // Recorrer cada equipo y crear una fila
+  foreach ($equipos as $equipo) {
+  // Obtener la clase CSS para el estado
+  $claseEstado = obtenerClaseEstado($equipo['estado']);
+?>
+      <tr class="tr">
+        <td><?php echo htmlspecialchars($equipo['id']); ?></td>
+        <td><?php echo htmlspecialchars($equipo['tipo_equipo']); ?></td>
+        <td><?php echo htmlspecialchars($equipo['marca']); ?></td>
+        <td><?php echo htmlspecialchars($equipo['modelo']); ?></td>
+        <td><?php echo htmlspecialchars($equipo['numero_serie']); ?></td>
+        
+        <td class="Estado">
+        <span class="<?php echo $claseEstado; ?>">
+          <?php echo htmlspecialchars($equipo['estado']); ?>
+        </span>
+        </td>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+        <td>
+          <div class="btn-group">
+              <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)">
+                <img src="../img/pincel.png" width="24px" height="25px" class="img">
+              </button>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+              <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)">
+                <img src="../img/basura.png" width="23px" height="25px" class="img">
+              </button>
+          </div>
+        </td>
+      </tr>
+<?php
+  }
+    } else {
+      // Si no hay equipos, mostrar mensaje
+        ?>
+          <tr class="tr">
+            <td colspan="7" style="text-align: center;">
+              No hay equipos registrados o hay un problema con la base de datos
+            </td>
+          </tr>
+  <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span id="en-us" class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
+  </main>
 
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="disponible">Disponible</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="mantenimiento">Mantenimiento</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso">En uso</span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-                      <td>2</td>
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-                      <td class="Estado"><span class="en-uso"><span class="en-uso-texto">En uso</span></span></td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </main>
-
-          <?php include_once '../include/modal-filtro-equipo.php'; ?>
-          <?php include_once '../include/modal-filtro-marca.php'; ?>
-          <?php include_once '../include/equipos-form.php'; ?>
+          <?php include_once '../include/modal-filtro-equipo.php'; ?> <!-- cuerpo de modal-filtro-equipo -->
+          <?php include_once '../include/modal-filtro-marca.php'; ?> <!-- cuerpo de modal-filtro-marca -->
+          <?php include_once '../include/modal-filtro-estado.php'; ?> <!-- cuerpo de modal-filtro-estado -->
+          <?php include_once '../include/equipos-form.php'; ?> <!-- cuerpo de equipos-form -->
 
 
     </div>
 
-    <script>
-
- document.addEventListener('DOMContentLoaded', () => {
-  // Primer modal
-  const modal = document.getElementById('modal');
-  const openModalButton = document.getElementById('f-equipo');
-  const closeModalButton = document.getElementById('close-modal');
-
-  openModalButton.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-  });
-
-  closeModalButton.addEventListener('click', () => {
-    modal.classList.add('hidden');
-  });
-
-
-  const modalMarca = document.getElementById('modal-marca');
-  const openModalMarcaButton = document.getElementById('f-marca');
-  const closeModalMarcaButton = document.getElementById('close-modal-marca');
-
-  openModalMarcaButton.addEventListener('click', () => {
-    modalMarca.classList.remove('hidden'); // CORREGIDO
-  });
-
-  closeModalMarcaButton.addEventListener('click', () => {
-    modalMarca.classList.add('hidden'); // CORREGIDO
-  });
-
-
-  // Segundo modal (form)
-  const form = document.getElementById('container-form');
-  const openFormButton = document.getElementById('btn-agregar');
-  const closeFormButton = document.getElementById('btn-cancelar');
-
-  openFormButton.addEventListener('click', () => {
-    form.classList.remove('hidden');
-  });
-
-  closeFormButton.addEventListener('click', () => {
-    form.classList.add('hidden');
-  });
-});
-
-
-</script>
-
-
+<script src="../js/equipos.js"></script>
 
 </body>
-<script src="../js/equipo.js"></script>
 </html>

@@ -14,10 +14,15 @@
     opacity: 1;
     transition: opacity 0.3s;
     margin-top: 130px;
-    margin-left: 160px;
+    margin-left: 120px;
     }
 
-    .modal-marca{
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none; /* no permite hacer clic ni interacción */
+    }
+
+.modal-marca{
     display: flex;
     position: fixed;
     flex-direction: column;
@@ -32,6 +37,34 @@
     transition: opacity 0.3s;
     margin-top: 130px;
     margin-left: 250px;
+    }
+
+
+.modal-marca.hidden {
+    opacity: 0;
+    pointer-events: none; /* no permite hacer clic ni interacción */
+    }
+
+.modal-estado{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: start;
+    width: 521px;
+    height: 358px;
+    flex-shrink: 0;
+    border-radius: 26px;
+    background: #FFF;
+    box-shadow: 0px 13px 61px 0px rgba(169, 169, 169, 0.37);
+    opacity: 1;
+    transition: opacity 0.3s;
+    margin-top: 130px;
+    margin-left: 410px;
+    }
+
+.modal-estado.hidden {
+    opacity: 0;
+    pointer-events: none; /* no permite hacer clic ni interacción */
     }
 
 /* Contenedor del modal */
