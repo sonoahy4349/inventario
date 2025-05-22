@@ -38,6 +38,26 @@
 width: 129px;
 height: 38px;
 flex-shrink: 0;
+margin-left: 15px;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
+}
+
+.btn-imprimir{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
 border: none;          /* elimina el borde */
 box-shadow: none;      /* elimina cualquier sombra */
 outline: none;
@@ -47,7 +67,7 @@ background: #4880FF;
 color: #FFF;
 text-align: center;
 font-family: "Nunito Sans";
-font-size: 14px;
+font-size: 15px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;

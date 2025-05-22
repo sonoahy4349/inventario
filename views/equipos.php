@@ -40,7 +40,7 @@
             <button id="f-equipo" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
             
             <p class="filtro-texto">Marca</p>
-             <button id="f-ubicacion" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
+             <button id="f-marca" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
 
             <p class="filtro-texto">Estado</p>
              <button id="f-estado" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
@@ -48,7 +48,8 @@
             <img class="reiniciar-filtro" src="../img/reiniciar.png" alt="flecha">
             <p class="filtro-texto-rojo">Reiniciar filtro</p>
 
-            <button class="btn-agregar" id="btn-agregar">+ Agregar equipo</button>
+            <button class="btn-imprimir" id="btn-imprimir">Imprimir lista</button>
+            <button class="btn-agregar" id="btn-agregar">Agregar equipo</button>
           </div>
 
         </div>
@@ -245,6 +246,7 @@
           </main>
 
           <?php include_once '../include/modal-filtro-equipo.php'; ?>
+          <?php include_once '../include/modal-filtro-marca.php'; ?>
           <?php include_once '../include/equipos-form.php'; ?>
 
 
@@ -265,6 +267,20 @@
   closeModalButton.addEventListener('click', () => {
     modal.classList.add('hidden');
   });
+
+
+  const modalMarca = document.getElementById('modal-marca');
+  const openModalMarcaButton = document.getElementById('f-marca');
+  const closeModalMarcaButton = document.getElementById('close-modal-marca');
+
+  openModalMarcaButton.addEventListener('click', () => {
+    modalMarca.classList.remove('hidden'); // CORREGIDO
+  });
+
+  closeModalMarcaButton.addEventListener('click', () => {
+    modalMarca.classList.add('hidden'); // CORREGIDO
+  });
+
 
   // Segundo modal (form)
   const form = document.getElementById('container-form');
