@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style/dash.css">
     <link rel="stylesheet" href="../style/equipos.css">
     <link rel="stylesheet" href="../style/modal-filtro-equipo.css">
+    <link rel="stylesheet" href="../style/equipos-form.css">
  
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -244,25 +245,42 @@
           </main>
 
           <?php include_once '../include/modal-filtro-equipo.php'; ?>
+          <?php include_once '../include/equipos-form.php'; ?>
+
 
     </div>
 
     <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modal');
-    const openButton = document.getElementById('f-equipo');
-    const closeButton = document.getElementById('close-modal');
 
-    // Mostrar el modal
-    openButton.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-    });
+ document.addEventListener('DOMContentLoaded', () => {
+  // Primer modal
+  const modal = document.getElementById('modal');
+  const openModalButton = document.getElementById('f-equipo');
+  const closeModalButton = document.getElementById('close-modal');
 
-    // Ocultar el modal
-    closeButton.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });
+  openModalButton.addEventListener('click', () => {
+    modal.classList.remove('hidden');
   });
+
+  closeModalButton.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  // Segundo modal (form)
+  const form = document.getElementById('container-form');
+  const openFormButton = document.getElementById('btn-agregar');
+  const closeFormButton = document.getElementById('btn-cancelar');
+
+  openFormButton.addEventListener('click', () => {
+    form.classList.remove('hidden');
+  });
+
+  closeFormButton.addEventListener('click', () => {
+    form.classList.add('hidden');
+  });
+});
+
+
 </script>
 
 
