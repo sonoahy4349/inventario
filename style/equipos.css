@@ -325,10 +325,101 @@ font-weight: 700;
 line-height: normal;
 }
 
-
-
 .modal-show {
   display: none;
 }
 
+   /* Estilos para la paginación */
+        .paginacion-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 85%;
+        }
+        
+        .paginacion-info {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .paginacion-controles {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .paginacion-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 35px;
+            text-align: center;
+        }
+        
+        .paginacion-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .paginacion-btn.deshabilitado {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .paginacion-btn.activo {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        .paginacion-btn.activo:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+            color: white;
+        }
+        
+        .paginacion-puntos {
+            padding: 8px 4px;
+            color: #666;
+            font-weight: bold;
+        }
 
+        .tabla-vacia {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 768px) {
+            .paginacion-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .paginacion-controles {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .paginacion-btn {
+                padding: 6px 10px;
+                font-size: 13px;
+                min-width: 30px;
+            }
+}
