@@ -270,18 +270,7 @@ INSERT INTO equipo_tipo (nombre, descripcion) VALUES
 -- Ejemplo de inserción de un equipo
 INSERT INTO equipos (tipo_id, marca_id, modelo, numero_serie, estado_id, descripcion) 
 VALUES (1, 1, 'Latitude 5420', 'SN12345678', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'j', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN3fyg45689', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1r4h5689', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1y3gs5689', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'S13yffdd5678789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SNyy125789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1dhg2456789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN136ds789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1hh2456789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1t2456789', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1gg24f569', 2, 'Equipo nuevo para área de desarrollo'),
-(1, 1, 'Latitude 5420', 'SN1gh2a389', 2, 'Equipo nuevo para área de desarrollo');
+(1, 1, 'Latitude 5420', 'j', 2, 'Equipo nuevo para área de desarrollo');
 
 INSERT INTO roles (nombre)
 VALUES 
