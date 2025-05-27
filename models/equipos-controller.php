@@ -98,7 +98,7 @@ function obtenerClaseEstado($estado) {
             return 'disponible';
         case 'en uso':
             return 'en-uso';
-        case 'en mantenimiento':
+        case 'mantenimiento':
             return 'mantenimiento';
         case 'dado de baja':
             return 'baja';
