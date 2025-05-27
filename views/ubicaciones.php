@@ -1,3 +1,35 @@
+<?php
+// Incluir conexión
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "helpdesk";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Consulta para obtener todas las ubicaciones con sus datos relacionados
+$sql = "SELECT 
+            u.id,
+            e.nombre AS edificio,
+            CONCAT(p.nombre, ' (', p.numero_planta, ')') AS planta,
+            COALESCE(s.nombre, 'Sin asignar') AS servicio,
+            COALESCE(ui.nombre, 'Sin asignar') AS ubicacion_interna
+        FROM ubicaciones u
+        JOIN edificios e ON u.edificio_id = e.id
+        JOIN plantas p ON u.planta_id = p.id
+        LEFT JOIN servicios s ON u.servicio_id = s.id
+        LEFT JOIN ubicaciones_internas ui ON u.ubicacion_interna_id = ui.id
+        ORDER BY e.nombre, p.numero_planta";
+
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,194 +87,55 @@
 
         </div>
 
-          <main class="tabla-principal">
-            <div class="tabla-wrapper">
-
-              <table class="tabla-header">
+ <main class="tabla-principal">
+        <div class="tabla-wrapper">
+            <table class="tabla-header">
                 <thead>
-                  <tr>
-                    <th class="th">Edificio</th>
-                    <th class="th">Planta</th>
-                    <th class="th">Servicio</th>
-                    <th class="th">Ubicación interna</th>
-                    <th class="th">Acción</th>
-
-                  </tr>
+                    <tr>
+                        <th class="th">Edificio</th>
+                        <th class="th">Planta</th>
+                        <th class="th">Servicio</th>
+                        <th class="th">Ubicación interna</th>
+                        <th class="th">Acción</th>
+                    </tr>
                 </thead>
-              </table>
+            </table>
 
-              <div class="tabla-scroll">
+            <div class="tabla-scroll">
                 <table class="tabla-body">
-                  <tbody>
-                    <tr class="tr">
-                      <td>Laptop</td>
-                      <td>Dell</td>
-                      <td>XPS 13</td>
-                      <td>123456789</td>
-
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
- 
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
- 
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-   
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
- 
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-  
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-   
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-    
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-    
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
- 
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-  
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr class="tr">
-
-                      <td>Monitor</td>
-                      <td>LG</td>
-                      <td>UltraFine 5K</td>
-                      <td>987654321</td>
-
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn-izq"><img src="../img/pincel.png" width="24px" height="25px" class="img"></button>
-                          <button class="btn-der"><img src="../img/basura.png" width="23px" height="25px" class="img"></button>
-                        </div>
-                      </td>
-                    </tr>
-
-                  </tbody>
+                    <tbody>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            // Mostrar datos de cada fila
+                            while($row = $result->fetch_assoc()) {
+                                echo "<tr class='tr'>";
+                                echo "<td>" . htmlspecialchars($row["edificio"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($row["planta"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($row["servicio"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($row["ubicacion_interna"]) . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<button class='btn-izq' onclick='editarUbicacion(" . $row["id"] . ")'>";
+                                echo "<img src='../img/pincel.png' width='24px' height='25px' class='img'>";
+                                echo "</button>";
+                                echo "<button class='btn-der' onclick='eliminarUbicacion(" . $row["id"] . ")'>";
+                                echo "<img src='../img/basura.png' width='23px' height='25px' class='img'>";
+                                echo "</button>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr class='tr'>";
+                            echo "<td colspan='5' style='text-align: center; padding: 20px;'>No hay ubicaciones registradas</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
                 </table>
-              </div>
             </div>
-          </main>
+        </div>
+    </main>
     </div>
 
  
