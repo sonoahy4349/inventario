@@ -21,7 +21,7 @@
 .filtros{
     display: flex;
     flex-direction: row;
-    width: 900px;
+    width: 85%;
     height: 70px;
     flex-shrink: 0;
     border-radius: 10px;
@@ -40,6 +40,7 @@
 }
 
 .filtro-elementos{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,7 +123,7 @@ opacity: 0.9;
 th, td {
   padding: 10px;
   text-align: center;
-  width: calc(100% / 5); /* Ajusta si cambias el número de columnas */
+  width: calc(100% / 6); /* Ajusta si cambias el número de columnas */
   font-family: "Nunito Sans";
   font-size: 18px;
   font-weight: 600;
@@ -214,6 +215,46 @@ th, td {
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+.btn-agregar{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
+margin-left: 15px;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
+}
+
+.btn-imprimir{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+margin-left: auto;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
 }
 
 .close:hover,

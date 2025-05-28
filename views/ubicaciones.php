@@ -60,6 +60,7 @@ if ($result->num_rows > 0) {
     <title>Document</title>
     <link rel="stylesheet" href="../style/dash.css">
     <link rel="stylesheet" href="../style/ubicaciones.css">
+    <link rel="stylesheet" href="../style/ubicaciones-form.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,16 +88,6 @@ if ($result->num_rows > 0) {
 
             <p class="filtro-texto">Planta</p>
             <button id="f-equipo" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
-              <!-- The Modal -->
-              <div id="m-equipo" class="m-equipo">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p>Some text in the Modal..</p>
-                </div>
-
-              </div>
 
             <p class="filtro-texto">Servicio</p>
              <button id="f-ubicacion" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
@@ -105,6 +96,9 @@ if ($result->num_rows > 0) {
              <button id="f-estado" class="filtro-boton"><img src="../img/flecha-abajo.png" alt="flecha"></button>
 
             <img class="reiniciar-filtro" src="../img/reiniciar.png" alt="flecha">
+
+            <button class="btn-imprimir" id="btn-imprimir">Imprimir lista</button>
+            <button class="btn-agregar" id="btn-agregar-ubicacion">Nueva Ubicacion</button>
           </div>
 
         </div>
@@ -245,8 +239,11 @@ if ($result->num_rows > 0) {
             <?php endif; ?>
             
         </div>
+         <?php include_once '../include/ubicaciones-form.php'; ?>
+      </main>
     </div>
-
+        <?php include_once '../include/ubicaciones-form.php'; ?>
+  
  
 </body>
 </html>
