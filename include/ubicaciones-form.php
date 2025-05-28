@@ -1,9 +1,9 @@
 <?php include '../models/conexion.php'; ?>
 
-<div id="container-form" class="container-form ">
+<div id="container-form" class="container-form hidden">
   <div class="form-box">
     <h1 class="h1-form">Crear nueva ubicación</h1>
-    <form class="form-equipos" action="../models/crear-ubicacion.php" method="POST">
+    <form class="form-equipos" id="f-ubicaciones" action="../models/crear-ubicacion.php" method="POST">
       
       <!-- Edificio -->
       <div class="form-group">
@@ -40,7 +40,7 @@
       </div>
 
       <div class="btn-group-form">
-        <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+        <button type="button" id="btn-cancelar-ubicacion" class="btn-cancelar">Cancelar</button>
         <button type="submit" class="btn-agregar-form">Añadir</button> 
       </div>
 

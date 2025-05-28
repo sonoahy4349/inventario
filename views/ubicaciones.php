@@ -242,8 +242,23 @@ if ($result->num_rows > 0) {
          <?php include_once '../include/ubicaciones-form.php'; ?>
       </main>
     </div>
-        <?php include_once '../include/ubicaciones-form.php'; ?>
-  
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnAbrir = document.getElementById("btn-agregar-ubicacion");
+    const btnCancelar = document.getElementById("btn-cancelar-ubicacion");
+    const modal = document.querySelector(".container-form");
+
+    btnAbrir.addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+
+    btnCancelar.addEventListener("click", function () {
+      modal.classList.add("hidden");
+    });
+  });
+</script>
+
  
 </body>
 </html>
