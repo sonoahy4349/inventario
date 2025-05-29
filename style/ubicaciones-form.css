@@ -179,3 +179,8 @@ color: rgba(0, 0, 0, .6);
 select:hover{
   cursor: pointer;
 }
+
+.form-banner{
+  width: 100px;
+  height:40px;
+}

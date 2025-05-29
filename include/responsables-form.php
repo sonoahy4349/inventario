@@ -1,8 +1,9 @@
 
 
-<div id="container-form" class="container-form">
+<div id="container-form" class="container-form hidden">
   <div class="form-box">
     <h1 class="h1-form">Agregar nuevo responsable</h1>
+    <img src="../img/responsable-banner.png" alt="Responsable Banner" class="form-banner" style="width: auto; height: 130px;">   
     <form class="form-equipos" action="../models/agregar-equipos.php" method="POST">
       
       <!-- Nombre del responsable -->
@@ -22,14 +23,6 @@
         <label for="estado_id" class="nombre">Cargo</label>
         <select id="estado_id" name="estado_id" required>
           <option value="" disabled selected>Selecciona un cargo</option>
-        </select>
-      </div>
-
-      <!-- Area del responsable -->
-    <div class="form-group">
-        <label for="estado_id" class="nombre">Area</label>
-        <select id="estado_id" name="estado_id" required>
-          <option value="" disabled selected>Selecciona el area</option>
         </select>
       </div>
 

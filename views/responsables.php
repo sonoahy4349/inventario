@@ -20,7 +20,7 @@
 
         <div class="header">
           <h1 class="titulo">Responsables</h1>
-          <button class="btn-usuario">+ Añadir</button>
+          <button id="btn-agregar-usuario" class="btn-usuario">+ Añadir</button>
         </div>
 
     <main class="main">
@@ -124,11 +124,26 @@
                 </div>
             </div>
 
-            
-
     </main>
 <?php include_once '../include/responsables-form.php'; ?>
 
     </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnAbrir = document.getElementById("btn-agregar-usuario");
+    const btnCancelar = document.getElementById("btn-cancelar");
+    const modal = document.querySelector(".container-form");
+
+    btnAbrir.addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+
+    btnCancelar.addEventListener("click", function () {
+      modal.classList.add("hidden");
+    });
+  });
+</script>
+
 </body>
 </html>
