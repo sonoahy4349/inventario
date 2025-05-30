@@ -44,9 +44,10 @@ $equiposEnMantenimiento = $rowMantenimiento['total'];
 
 
 $sql_total = "SELECT COUNT(*) as total FROM ubicaciones";
-$sql_edificios = "SELECT COUNT(DISTINCT edificio) as total FROM ubicaciones";
-$sql_servicios = "SELECT COUNT(DISTINCT servicio) as total FROM ubicaciones WHERE servicio IS NOT NULL";
-$sql_ubicaciones = "SELECT COUNT(DISTINCT ubicacion_interna) as total FROM ubicaciones WHERE ubicacion_interna IS NOT NULL";
+$sql_edificios = "SELECT COUNT(DISTINCT edificio_id) as total FROM ubicaciones";
+$sql_servicios = "SELECT COUNT(DISTINCT servicio_id) as total FROM ubicaciones WHERE servicio_id IS NOT NULL";
+$sql_ubicaciones = "SELECT COUNT(DISTINCT ubicacion_interna_id) as total FROM ubicaciones WHERE ubicacion_interna_id IS NOT NULL";
+
 
 // Ejecutar consultas
 $resultado_total = $conn->query($sql_total);

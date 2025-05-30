@@ -98,7 +98,7 @@ function obtenerClaseEstado($estado) {
             return 'disponible';
         case 'en uso':
             return 'en-uso';
-        case 'en mantenimiento':
+        case 'mantenimiento':
             return 'mantenimiento';
         case 'dado de baja':
             return 'baja';
@@ -108,4 +108,29 @@ function obtenerClaseEstado($estado) {
             return 'disponible';
     }
 }
+
+// Configuración de paginación
+$filasPorPagina = 11;
+$paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$paginaActual = max(1, $paginaActual); // Asegurar que sea mínimo 1
+
+// Obtener todos los equipos
+$equipos = obtenerEquiposAlternativa();
+$totalEquipos = count($equipos);
+$totalPaginas = ceil($totalEquipos / $filasPorPagina);
+
+// Asegurar que la página actual no exceda el total
+$paginaActual = min($paginaActual, max(1, $totalPaginas));
+
+// Calcular el offset para la consulta
+$offset = ($paginaActual - 1) * $filasPorPagina;
+
+// Obtener equipos para la página actual
+$equiposPagina = array_slice($equipos, $offset, $filasPorPagina);
+
+echo "<!-- DEBUG: Total equipos: $totalEquipos, Página: $paginaActual/$totalPaginas -->";
+
+
+
+
 ?>

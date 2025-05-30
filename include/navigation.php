@@ -20,6 +20,13 @@
       </li>
 
       <li class="sidebar-element">
+        <a href="../views/tickets.php" class="sidebar-link">
+          <img src="../assets/cupon.svg" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Tickets</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
         <a href="#" class="sidebar-link">
           <img src="../assets/estadisticas.svg" class="sidebar-icono" alt="Icono Estadisticas">
           <span class="sidebar-text">Estadisticas</span>
@@ -29,7 +36,7 @@
       <li class="sidebar-element">
         <a href="#" class="sidebar-link">
           <img src="../assets/reportes.svg" class="sidebar-icono" alt="Icono Inicio">
-          <span class="sidebar-text">Reportes</span>
+          <span class="sidebar-text">Resguardos</span>
         </a>
       </li>
 
