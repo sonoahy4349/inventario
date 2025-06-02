@@ -1,70 +1,12 @@
 <?php
-// Archivo: obtener_equipos.php
-// Este archivo obtiene todos los equipos de la base de datos usando MySQLi
-
-// SOLUCIÓN 1: Incluir conexión y verificar que existe
+session_start();
 require_once '../models/conexion.php';
 
-function obtenerEquipos() {
-    global $conexion;
-    
-    // VERIFICAR que la conexión existe
-    if (!$conexion) {
-        echo "Error: No hay conexión a la base de datos";
-        return [];
-    }
-    
-    // SQL para obtener los equipos con sus relaciones (JOIN)
-    $sql = "SELECT 
-                e.id,
-                et.nombre as tipo_equipo,
-                em.nombre as marca,
-                e.modelo,
-                e.numero_serie,
-                es.nombre as estado
-            FROM equipos e
-            INNER JOIN equipo_tipo et ON e.tipo_id = et.id
-            INNER JOIN equipo_marca em ON e.marca_id = em.id  
-            INNER JOIN estados_equipo es ON e.estado_id = es.id
-            ORDER BY e.id";
-    
-    // Ejecutar la consulta
-    $resultado = $conexion->query($sql);
-    
-    // Verificar si la consulta fue exitosa
-    if ($resultado) {
-        // Crear un array para almacenar los equipos
-        $equipos = [];
-        
-        // Obtener cada fila como un array asociativo
-        while ($fila = $resultado->fetch_assoc()) {
-            $equipos[] = $fila;
-        }
-        
-        return $equipos;
-    } else {
-        // Si hay error, mostrar mensaje
-        echo "Error en la consulta: " . $conexion->error;
-        return [];
-    }
-}
+// =========================
+// Funciones reutilizables
+// =========================
 
-// SOLUCIÓN 2: Función alternativa que crea su propia conexión
-function obtenerEquiposAlternativa() {
-    // Crear conexión dentro de la función
-    $host = "localhost";
-    $usuario = "root";
-    $contrasena = "";
-    $base_de_datos = "helpdesk"; // Cambia por "helpdesk" si es necesario
-    
-    $conn = new mysqli($host, $usuario, $contrasena, $base_de_datos);
-    $conn->set_charset("utf8");
-    
-    if ($conn->connect_error) {
-        echo "Error de conexión: " . $conn->connect_error;
-        return [];
-    }
-    
+function obtenerEquipos($conn) {
     $sql = "SELECT 
                 e.id,
                 et.nombre as tipo_equipo,
@@ -80,54 +22,89 @@ function obtenerEquiposAlternativa() {
     
     $resultado = $conn->query($sql);
     $equipos = [];
-    
+
     if ($resultado) {
         while ($fila = $resultado->fetch_assoc()) {
             $equipos[] = $fila;
         }
     }
-    
-    $conn->close();
+
     return $equipos;
 }
 
-// Función para obtener la clase CSS según el estado
 function obtenerClaseEstado($estado) {
     switch(strtolower($estado)) {
-        case 'disponible':
-            return 'disponible';
-        case 'en uso':
-            return 'en-uso';
-        case 'mantenimiento':
-            return 'mantenimiento';
-        case 'dado de baja':
-            return 'baja';
-        case 'en préstamo':
-            return 'prestamo';
-        default:
-            return 'disponible';
+        case 'disponible': return 'disponible';
+        case 'en uso': return 'en-uso';
+        case 'mantenimiento': return 'mantenimiento';
+        case 'dado de baja': return 'baja';
+        case 'en préstamo': return 'prestamo';
+        default: return 'disponible';
     }
 }
 
-// Configuración de paginación
-$filasPorPagina = 11;
-$paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$paginaActual = max(1, $paginaActual); // Asegurar que sea mínimo 1
+// =========================
+// Lógica de acciones
+// =========================
 
-// Obtener todos los equipos
-$equipos = obtenerEquiposAlternativa();
+$accion = $_GET['accion'] ?? $_POST['accion'] ?? null;
+
+// ---- AGREGAR EQUIPO ----
+if ($accion === 'agregar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tipo_id = $_POST["tipo_id"];
+    $marca_id = $_POST["marca_id"];
+    $modelo = $_POST["modelo"];
+    $numero_serie = $_POST["numero_serie"];
+    $estado_id = $_POST["estado_id"];
+
+    if (empty($tipo_id) || empty($marca_id) || empty($modelo) || empty($numero_serie) || empty($estado_id)) {
+        die("Todos los campos son obligatorios.");
+    }
+
+    $stmt = $conn->prepare("INSERT INTO equipos (tipo_id, marca_id, modelo, numero_serie, estado_id) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("iissi", $tipo_id, $marca_id, $modelo, $numero_serie, $estado_id);
+
+    if ($stmt->execute()) {
+        header("Location: ../views/equipos.php?success=1");
+        exit();
+    } else {
+        echo "Error al agregar equipo: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+    header("Location: ../views/equipos.php?success=1");
+exit();
+}
+
+// ---- ELIMINAR EQUIPO ----
+if ($accion === 'eliminar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = intval($_POST['id']);
+
+    $conn->query("DELETE FROM ticket_equipos WHERE equipo_id = $id");
+
+    $sql = "DELETE FROM equipos WHERE id = $id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'error' => $conn->error]);
+    }
+    exit();
+}
+
+// ---- OBTENER LISTA DE EQUIPOS (por defecto) ----
+$equipos = obtenerEquipos($conn);
+
+// PAGINACIÓN
+$filasPorPagina = 11;
+$paginaActual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
+
 $totalEquipos = count($equipos);
 $totalPaginas = ceil($totalEquipos / $filasPorPagina);
+$paginaActual = min($paginaActual, $totalPaginas);
 
-// Asegurar que la página actual no exceda el total
-$paginaActual = min($paginaActual, max(1, $totalPaginas));
-
-// Calcular el offset para la consulta
 $offset = ($paginaActual - 1) * $filasPorPagina;
-
-// Obtener equipos para la página actual
 $equiposPagina = array_slice($equipos, $offset, $filasPorPagina);
 
 echo "<!-- DEBUG: Total equipos: $totalEquipos, Página: $paginaActual/$totalPaginas -->";
-
 ?>

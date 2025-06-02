@@ -3,7 +3,8 @@
 <div id="container-form" class="container-form hidden">
   <div class="form-box">
     <h1 class="h1-form">Agregar nuevo equipo</h1>
-    <form class="form-equipos" action="../models/agregar-equipos.php" method="POST">
+    <form class="form-equipos" action="../models/equipos-controller.php" method="POST">
+    <input type="hidden" name="accion" value="agregar">
       
       <!-- Tipo de equipo -->
       <div class="form-group">

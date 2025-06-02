@@ -14,9 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 
 </head>
+<script src="../js/equipos.js"></script>
 
 <body>
-    <?php include_once '../include/navigation.php'; ?>
+   
 
     <div class="contenedor"> <!-- Cuerpo contenedor de todo -->
 
@@ -100,11 +101,11 @@ if (!empty($equiposPagina)) {
 
         <td>
           <div class="btn-group" id="equipo-<?php echo $equipo['id']; ?>">
-              <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)">
+              <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para editar equipo -->
                   <img src="../img/pincel.png" width="24px" height="25px" class="img">
               </button>
 
-              <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)">
+              <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para eliminar equipo -->
                   <img src="../img/basura.png" width="23px" height="25px" class="img">
               </button>
           </div>
@@ -213,37 +214,7 @@ if (!empty($equiposPagina)) {
 
     </div>
 
-<script src="../js/equipos.js"></script>
-<script>
-function eliminarEquipo(id) {
-    if (!confirm("¿Estás seguro de que deseas eliminar este equipo?")) return;
-
-    const formData = new FormData();
-    formData.append("id", id);
-
-    fetch("../models/eliminar-equipos.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            const div = document.getElementById("equipo-" + id);
-            if (div) div.remove(); // elimina visualmente
-            alert("Equipo eliminado correctamente.");
-            location.reload(); // ← Añadido: recarga la página
-        } else {
-            console.error(data.error);
-            alert("Ocurrió un error al eliminar el equipo.");
-        }
-    })
-    .catch(error => {
-        console.error("Error en la solicitud:", error);
-        alert("Fallo de conexión.");
-    });
-}
-</script>
-
+ <?php include_once '../include/navigation.php'; ?>
 
 </body>
 </html>
