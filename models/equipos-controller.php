@@ -130,7 +130,4 @@ $equiposPagina = array_slice($equipos, $offset, $filasPorPagina);
 
 echo "<!-- DEBUG: Total equipos: $totalEquipos, Página: $paginaActual/$totalPaginas -->";
 
-
-
-
 ?>

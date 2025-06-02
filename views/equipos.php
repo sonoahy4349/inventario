@@ -208,9 +208,7 @@ if (!empty($equiposPagina)) {
         </div>
   </main>
 
-          <?php include_once '../include/modal-filtro-equipo.php'; ?>
-          <?php include_once '../include/modal-filtro-marca.php'; ?>
-          <?php include_once '../include/modal-filtro-estado.php'; ?>
+          <?php include_once '../include/modales-equipo.php'; ?>
           <?php include_once '../include/equipos-form.php'; ?>
 
     </div>
