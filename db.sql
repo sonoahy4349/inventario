@@ -258,3 +258,25 @@ INSERT INTO ubicaciones (edificio_id, planta_id, servicio_id, ubicacion_interna_
 (4, 13, 1, 4), -- C, Planta Baja, Administración, Recepción
 (5, 14, 4, 1), -- D, Planta Baja, Sistemas, Oficina 101
 (6, 15, 2, 3); -- E, Planta Baja, Recursos Humanos, Cubículo A
+
+
+-- Crear tabla de cargos
+CREATE TABLE cargos (
+    id_cargo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_cargo VARCHAR(50) NOT NULL
+);
+
+-- Crear tabla de responsables
+CREATE TABLE responsable (
+    id_responsable INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    id_cargo INT,
+    FOREIGN KEY (id_cargo) REFERENCES cargos(id_cargo)
+);
+
+-- Insertar cargos
+INSERT INTO cargos (nombre_cargo) VALUES ('Coordinador'), ('Técnico'), ('Administrador');
+
+-- Insertar responsables
+INSERT INTO responsable (nombre, apellidos, id_cargo) VALUES ('Ana', 'López', 2);
