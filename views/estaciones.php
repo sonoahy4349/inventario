@@ -178,7 +178,21 @@
         </main>
     </div>
 
-   
+   <script>
+  // modal (form)
+  document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('container-form');
+  const openFormButton = document.getElementById('btn-agregar');
+  const closeFormButton = document.getElementById('btn-cancelar');
 
+  openFormButton.addEventListener('click', () => {
+    form.classList.remove('hidden');
+  });
+
+  closeFormButton.addEventListener('click', () => {
+    form.classList.add('hidden');
+  });
+});
+</script>
 </body>
 </html>
