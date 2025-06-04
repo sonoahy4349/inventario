@@ -4,6 +4,8 @@
   <div class="form-box">
     <h1 class="h1-form">Crear nueva ubicación</h1>
     <form class="form-equipos" id="f-ubicaciones" action="../models/crear-ubicacion.php" method="POST">
+      <input type="hidden" name="accion" value="crear_ubicacion">
+
       
       <!-- Edificio -->
       <div class="form-group">

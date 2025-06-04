@@ -41,15 +41,22 @@
       </li>
 
       <li class="sidebar-element">
+        <a href="../views/estaciones.php" class="sidebar-link">
+          <img src="../img/estaciones.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Estaciones</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
         <a href="../views/equipos.php" class="sidebar-link">
-          <img src="../assets/equipos.svg" class="sidebar-icono" alt="Icono Inicio">
+          <img src="../img/laptop.png" class="sidebar-icono" alt="Icono Inicio">
           <span class="sidebar-text">Equipos</span>
         </a>
       </li>
 
       <li class="sidebar-element">
         <a href="../views/ubicaciones.php" class="sidebar-link">
-          <img src="../assets/departamentos.svg" class="sidebar-icono" alt="Icono Inicio">
+          <img src="../img/hospital.png" class="sidebar-icono" alt="Icono Inicio">
           <span class="sidebar-text">Ubicaciones</span>
         </a>
       </li>

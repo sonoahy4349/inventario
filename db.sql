@@ -280,3 +280,4 @@ INSERT INTO cargos (nombre_cargo) VALUES ('Coordinador'), ('Técnico'), ('Admini
 
 -- Insertar responsables
 INSERT INTO responsable (nombre, apellidos, id_cargo) VALUES ('Ana', 'López', 2);
+

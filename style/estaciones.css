@@ -1,0 +1,425 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 100vh;
+    margin-top: 70px;   /* Altura de la navbar */
+    margin-left: 240px; /* Ancho de la sidebar */
+    padding: 1rem;      /* Espacio interno opcional para que respire */
+}
+
+
+/* Estilo para el titulo de la pestaña*/
+.titulo{
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.114px;
+}
+
+.header{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    width: 350px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+
+
+.btn-agregar{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
+margin-left: 15px;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
+}
+
+.btn-imprimir{
+width: 129px;
+height: 38px;
+flex-shrink: 0;
+border: none;          /* elimina el borde */
+box-shadow: none;      /* elimina cualquier sombra */
+outline: none;
+margin-left: auto;
+border-radius: 6px;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+cursor: pointer;
+}
+
+/* estilo para los filtros de la tabla*/
+.filtros{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 0.6px solid #D5D5D5;
+    background: #F9F9FB;
+    margin-top: 10px;
+}
+
+.filtro-icono{
+    display: flex;
+    width: 45px;
+    height: 70px;
+    flex-shrink: 0;
+    margin-left: 20px;
+   
+}
+
+.filtro-elementos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.filtro-texto{
+  color: #202224;
+  font-family: "Nunito Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0px 10px;
+}
+
+.filtro-texto-rojo{
+  color: #d33232;
+  font-family: "Nunito Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0px 10px;
+}
+
+.reiniciar-filtro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.filtro-boton{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+
+/* Estilos para la tabla principal */
+.tabla-principal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.tabla-header{
+width: 100%;
+height: 49px;
+flex-shrink: 0;
+margin-top: 20px;
+border-radius: 14px 14px 0px 0px;
+border: 0.6px solid #D5D5D5;
+background: #fcfdfd;
+font-family: "Nunito Sans";
+font-size: 17px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+opacity: 0.9;
+} 
+
+.tabla-body{
+width: 100%;
+height: 55px;
+flex-shrink: 0;
+border-radius: 0px 0px 14px 14px;
+border: 0.6px solid #D5D5D5;
+background: #FFFFFF;
+color: #202224;
+font-family: "Nunito Sans";
+font-size: 17px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+opacity: 0.9;
+}
+
+.th{
+color: #202224;
+font-family: "Nunito Sans";
+font-size: 16px;
+font-style: bold;
+font-weight: 800;
+line-height: normal;
+opacity: 0.9;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  width: calc(100% / 15); /* Ajusta si cambias el número de columnas */
+  font-family: "Nunito Sans";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tr:hover {
+  background-color: #D5D5D5;
+}
+
+
+/* Estilo para acciones */
+.btn-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.btn-izq{
+  background: #FAFBFD;
+  border: solid 1px #D5D5D5;
+  border-radius: 10px 0px 0px 10px;
+  padding: 2px 10px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-der{
+  background: #FAFBFD;
+  border: solid 1px #D5D5D5;
+  padding: 2px 10px;
+  border-radius: 0px 8px 8px 0px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-izq:hover {
+  background: #D5D5D5;
+}
+
+.btn-der:hover {
+  background: #D5D5D5;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Estilo para estados */
+.Estado{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+}
+
+/* ESTADO DISPONIBLE */
+.disponible{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100px;
+height: 100%;
+flex-shrink: 0;
+border-radius: 4.5px;
+background: #6226ef2c;
+color: #6226ef;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}
+
+/* ESTADO EN USO */
+
+.en-uso{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100px;
+height: 100%;
+flex-shrink: 0;
+border-radius: 4.5px;
+background: #00b69b3d;  
+color: #018b77;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
+
+/* ESTADO MANTENIMIENTO */
+
+.mantenimiento{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100px;
+height: 100%;
+flex-shrink: 0;
+border-radius: 4.5px;
+background: #ef372656;  
+color: #EF3826;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.modal-show {
+  display: none;
+}
+
+   /* Estilos para la paginación */
+        .paginacion-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            width: 85%;
+        }
+        
+        .paginacion-info {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .paginacion-controles {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .paginacion-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 35px;
+            text-align: center;
+        }
+        
+        .paginacion-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .paginacion-btn.deshabilitado {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .paginacion-btn.activo {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        .paginacion-btn.activo:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+            color: white;
+        }
+        
+        .paginacion-puntos {
+            padding: 8px 4px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .tabla-vacia {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 768px) {
+            .paginacion-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .paginacion-controles {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .paginacion-btn {
+                padding: 6px 10px;
+                font-size: 13px;
+                min-width: 30px;
+            }
+}

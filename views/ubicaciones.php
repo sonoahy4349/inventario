@@ -258,22 +258,21 @@ if ($result->num_rows > 0) {
     });
   });
 </script>
+
 <script>
   function eliminarUbicacion(id) {
     if (confirm("¿Estás seguro de que deseas eliminar esta ubicación?")) {
-      fetch("../models/eliminar-ubicacion.php", {
+      fetch("../models/ubicaciones-controller.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: "id=" + encodeURIComponent(id)
+        body: "action=eliminar&id=" + encodeURIComponent(id)
       })
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          // Puedes ocultar la fila directamente o recargar la página
-          // document.getElementById("fila-ubicacion-" + id).remove();
-          location.reload(); // recarga la página para reflejar el cambio
+          location.reload(); // recarga la página al éxito
         } else {
           alert("Error: " + (data.message || "No se pudo eliminar"));
         }
@@ -285,6 +284,7 @@ if ($result->num_rows > 0) {
     }
   }
 </script>
+
 
  
 </body>
