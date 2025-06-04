@@ -1,12 +1,12 @@
 <?php include '../models/conexion.php'; ?>
 
-<div id="container-form" class="container-form ">
+<div id="container-form" class="container-form hidden">
   <div class="form-box">
     <h1 class="h1-form">Agregar nueva estación</h1>
-    <form class="form-equipos" action="../models/estaciones-controller.php" method="POST">
+    <form class="form-estaciones" action="../models/estaciones-controller.php" method="POST">
     <input type="hidden" name="accion" value="agregar">
     
-      
+      <div class="divisor">
       <!-- Equipo Principal -->
       <div class="form-group">
         <label for="equipo_principal_id" class="nombre">Equipo Principal</label>
@@ -30,28 +30,31 @@
 
       <!-- Información del Equipo Principal (campos auto-rellenados) -->
       <div class="form-group">
-        <label class="nombre">Tipo de Equipo Principal</label>
+        <label class="nombre">Equipo Principal</label>
         <input type="text" id="tipo_principal" class="input" readonly>
       </div>
 
       <div class="form-group">
-        <label class="nombre">Marca del Equipo Principal</label>
+        <label class="nombre">Marca</label>
         <input type="text" id="marca_principal" class="input" readonly>
       </div>
 
       <div class="form-group">
-        <label class="nombre">Modelo del Equipo Principal</label>
+        <label class="nombre">Modelo</label>
         <input type="text" id="modelo_principal" class="input" readonly>
       </div>
 
       <div class="form-group">
-        <label class="nombre">No. de Serie del Equipo Principal</label>
+        <label class="nombre">No. de Serie</label>
         <input type="text" id="serie_principal" class="input" readonly>
       </div>
 
+      
+
+     
       <!-- Equipo Secundario (Opcional) -->
       <div class="form-group">
-        <label for="equipo_secundario_id" class="nombre">Equipo Secundario (Opcional)</label>
+        <label for="equipo_secundario_id" class="nombre">Equipo Secundario</label>
         <select id="equipo_secundario_id" name="equipo_secundario_id">
           <option value="" selected>Sin equipo secundario</option>
           <?php
@@ -73,30 +76,32 @@
       <!-- Información del Equipo Secundario (campos auto-rellenados) -->
       <div id="info-secundario" class="hidden">
         <div class="form-group">
-          <label class="nombre">Tipo de Equipo Secundario</label>
+          <label class="nombre">Equipo Secundario</label>
           <input type="text" id="tipo_secundario" class="input" readonly>
         </div>
 
         <div class="form-group">
-          <label class="nombre">Marca del Equipo Secundario</label>
+          <label class="nombre">Marca</label>
           <input type="text" id="marca_secundario" class="input" readonly>
         </div>
 
         <div class="form-group">
-          <label class="nombre">Modelo del Equipo Secundario</label>
+          <label class="nombre">Modelo</label>
           <input type="text" id="modelo_secundario" class="input" readonly>
         </div>
 
         <div class="form-group">
-          <label class="nombre">No. de Serie del Equipo Secundario</label>
+          <label class="nombre">No. de Serie</label>
           <input type="text" id="serie_secundario" class="input" readonly>
         </div>
       </div>
+      </div> <!-- Fin del divisor para Equipo Secundario -->
 
+      <div class="divisor">
       <!-- Ubicación Interna -->
       <div class="form-group">
         <label for="ubicacion_id" class="nombre">Ubicación Interna</label>
-        <select id="ubicacion_id" name="ubicacion_id" required>
+        <select id="ubicacion_id" name="ubicacion_id" class="select" required>
           <option value="" disabled selected>Selecciona una ubicación</option>
           <?php
           $sql = "SELECT u.id, 
@@ -119,17 +124,17 @@
       <!-- Información de Ubicación (campos auto-rellenados) -->
       <div class="form-group">
         <label class="nombre">Edificio</label>
-        <input type="text" id="edificio_info" class="input" readonly>
+        <input type="text" id="edificio_info" class="input2" readonly>
       </div>
 
       <div class="form-group">
         <label class="nombre">Planta</label>
-        <input type="text" id="planta_info" class="input" readonly>
+        <input type="text" id="planta_info" class="input2" readonly>
       </div>
 
       <div class="form-group">
         <label class="nombre">Servicio</label>
-        <input type="text" id="servicio_info" class="input" readonly>
+        <input type="text" id="servicio_info" class="input2" readonly>
       </div>
 
       <!-- Responsable -->
@@ -153,13 +158,14 @@
       <!-- Información del Responsable (campos auto-rellenados) -->
       <div class="form-group">
         <label class="nombre">Cargo del Responsable</label>
-        <input type="text" id="cargo_responsable" class="input" readonly>
+        <input type="text" id="cargo_responsable" class="input2" readonly>
       </div>
 
       <div class="btn-group-form">
         <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-        <button type="submit" class="btn-agregar-form">Agregar Estación</button>
+        <button type="submit" class="btn-agregar-form">Agregar</button>
       </div>
+      </div> <!-- Fin del divisor para Responsable -->
 
     </form>
   </div>

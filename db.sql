@@ -281,3 +281,44 @@ INSERT INTO cargos (nombre_cargo) VALUES ('Coordinador'), ('Técnico'), ('Admini
 -- Insertar responsables
 INSERT INTO responsable (nombre, apellidos, id_cargo) VALUES ('Ana', 'López', 2);
 
+-- Tabla de Estaciones
+CREATE TABLE estaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    equipo_principal_id INT NOT NULL,
+    equipo_secundario_id INT DEFAULT NULL,
+    ubicacion_id INT NOT NULL,
+    responsable_id INT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    activo BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (equipo_principal_id) REFERENCES equipos(id),
+    FOREIGN KEY (equipo_secundario_id) REFERENCES equipos(id),
+    FOREIGN KEY (ubicacion_id) REFERENCES ubicaciones(id),
+    FOREIGN KEY (responsable_id) REFERENCES responsable(id_responsable),
+    
+    -- Constraints para evitar duplicados
+    UNIQUE KEY unique_equipo_principal (equipo_principal_id),
+    UNIQUE KEY unique_equipo_secundario (equipo_secundario_id)
+);
+
+-- Insertar datos de ejemplo para estaciones
+INSERT INTO estaciones (nombre, equipo_principal_id, equipo_secundario_id, ubicacion_id, responsable_id) VALUES
+('Estación Administración 1', 1, 2, 1, 1),
+('Estación Sistemas Principal', 1, NULL, 4, 1),
+('Estación RH Planta 1', 2, NULL, 2, 1);
+
+-- Agregar más equipos de ejemplo para tener datos completos
+INSERT INTO equipos (tipo_id, marca_id, modelo, numero_serie, estado_id, descripcion) VALUES
+(2, 2, 'EliteDesk 800', 'SN87654321', 2, 'PC de escritorio para administración'),
+(3, 4, 'LaserJet Pro', 'SN11223344', 1, 'Impresora láser para oficina'),
+(1, 3, 'ThinkPad E14', 'SN55667788', 2, 'Laptop para área de sistemas');
+
+-- Actualizar las estaciones con los nuevos equipos
+UPDATE estaciones SET equipo_principal_id = 3, equipo_secundario_id = 4 WHERE id = 1;
+UPDATE estaciones SET equipo_principal_id = 5 WHERE id = 2;
+UPDATE estaciones SET equipo_principal_id = 6 WHERE id = 3;
+
+INSERT INTO equipo_tipo (nombre, descripcion) VALUES 
+('Monitor', 'Dispositivo de visualizacion');

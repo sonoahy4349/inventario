@@ -49,8 +49,8 @@
 
       <li class="sidebar-element">
         <a href="../views/equipos.php" class="sidebar-link">
-          <img src="../img/laptop.png" class="sidebar-icono" alt="Icono Inicio">
-          <span class="sidebar-text">Equipos</span>
+          <img src="../img/box-alt.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Inventario</span>
         </a>
       </li>
 
