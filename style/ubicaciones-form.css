@@ -1,7 +1,6 @@
-
 .container-form {
-  z-index: 1000;
-  margin-top: -900px; 
+  z-index: 1000; /* Asegura que el formulario esté por encima de otros elementos */
+  margin-top: -890px; 
   margin-left: 400px;
   display: flex;
   flex-direction: column;
@@ -91,7 +90,8 @@ opacity: 0.8;
 
 .input{
 display: flex;
-width: 240px;
+max-width: 240px;
+min-width: 240px;
 padding: 10px 14px;
 margin-left: auto;
 align-items: center;
@@ -161,7 +161,8 @@ cursor: pointer;
 
 select{
 display: flex;
-width: 240px;
+max-height: 240px;
+min-width: 240px;
 padding: 10px 14px;
 margin-left: auto;
 align-items: center;
@@ -177,4 +178,9 @@ color: rgba(0, 0, 0, .6);
 
 select:hover{
   cursor: pointer;
+}
+
+.form-banner{
+  width: 100px;
+  height:40px;
 }

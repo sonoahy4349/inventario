@@ -29,20 +29,41 @@
       <li class="sidebar-element">
         <a href="#" class="sidebar-link">
           <img src="../assets/reportes.svg" class="sidebar-icono" alt="Icono Inicio">
-          <span class="sidebar-text">Reportes</span>
+          <span class="sidebar-text">Resguardos</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
+        <a href="../views/estaciones.php" class="sidebar-link">
+          <img src="../img/estaciones.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Estaciones</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
+        <a href="../views/responsables.php" class="sidebar-link">
+          <img src="../img/laptop.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Laptops</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
+        <a href="../views/responsables.php" class="sidebar-link">
+          <img src="../img/printer.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Impresoras</span>
         </a>
       </li>
 
       <li class="sidebar-element">
         <a href="../views/equipos.php" class="sidebar-link">
-          <img src="../assets/equipos.svg" class="sidebar-icono" alt="Icono Inicio">
-          <span class="sidebar-text">Equipos</span>
+          <img src="../img/box-alt.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Inventario</span>
         </a>
       </li>
 
       <li class="sidebar-element">
         <a href="../views/ubicaciones.php" class="sidebar-link">
-          <img src="../assets/departamentos.svg" class="sidebar-icono" alt="Icono Inicio">
+          <img src="../img/hospital.png" class="sidebar-icono" alt="Icono Inicio">
           <span class="sidebar-text">Ubicaciones</span>
         </a>
       </li>
@@ -53,6 +74,7 @@
           <span class="sidebar-text">Responsables</span>
         </a>
       </li>
+
 
       <li class="sidebar-element sidebar-footer--ele">
         <a href="#" class="sidebar-link">

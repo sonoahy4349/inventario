@@ -78,7 +78,7 @@ cursor: pointer;
 .filtros{
     display: flex;
     flex-direction: row;
-    width: 85%;
+    width: 95%;
     height: 70px;
     flex-shrink: 0;
     border-radius: 10px;
@@ -152,7 +152,7 @@ cursor: pointer;
 }
 
 .tabla-header{
-width: 85%;
+width: 100%;
 height: 49px;
 flex-shrink: 0;
 margin-top: 20px;
@@ -160,7 +160,7 @@ border-radius: 14px 14px 0px 0px;
 border: 0.6px solid #D5D5D5;
 background: #fcfdfd;
 font-family: "Nunito Sans";
-font-size: 19px;
+font-size: 17px;
 font-style: normal;
 font-weight: 800;
 line-height: normal;
@@ -168,7 +168,7 @@ opacity: 0.9;
 } 
 
 .tabla-body{
-width: 85%;
+width: 100%;
 height: 55px;
 flex-shrink: 0;
 border-radius: 0px 0px 14px 14px;
@@ -176,7 +176,7 @@ border: 0.6px solid #D5D5D5;
 background: #FFFFFF;
 color: #202224;
 font-family: "Nunito Sans";
-font-size: 19px;
+font-size: 17px;
 font-style: normal;
 font-weight: 800;
 line-height: normal;
@@ -186,7 +186,7 @@ opacity: 0.9;
 .th{
 color: #202224;
 font-family: "Nunito Sans";
-font-size: 19px;
+font-size: 16px;
 font-style: bold;
 font-weight: 800;
 line-height: normal;
@@ -196,15 +196,32 @@ opacity: 0.9;
 th, td {
   padding: 10px;
   text-align: center;
-  width: calc(100% / 7); /* Ajusta si cambias el número de columnas */
+  width: calc(100% / 15); /* Ajusta si cambias el número de columnas */
   font-family: "Nunito Sans";
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .tr:hover {
   background-color: #D5D5D5;
 }
+
+.fila-ajustada > td {
+  height: 50px !important;
+  max-height: 50px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  padding: 0 !important;
+  vertical-align: middle;
+  width: 60px !important; /* Ajusta el ancho según sea necesario */
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
 
 
 /* Estilo para acciones */

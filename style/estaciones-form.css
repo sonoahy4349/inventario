@@ -1,14 +1,13 @@
-
 .container-form {
-  z-index: 1000;
-  margin-top: -900px; 
-  margin-left: 400px;
+  z-index: 1000; /* Asegura que el formulario esté por encima de otros elementos */
+  margin-top: -920px; 
+  margin-left: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 430px;
-  height: 560px;
+  width: 1300px;
+  height: 690px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #FFF;
@@ -25,15 +24,13 @@
 
 
 .form-box{
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 450px;
+  width: 100%;
   height: 100%;
   padding: 20px;
-  gap: 20px;
 }
 
 .h1-form {
@@ -52,9 +49,9 @@
   opacity: 0.8;
 }
 
-.form-equipos {
+.form-estaciones {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: start;
   gap: 30px;
@@ -66,11 +63,13 @@
 .form-group{
 
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: start;
   width: 100%; 
   height: 40px;
   margin-left: 0px;
+  margin: 15px 0px;
   color: var(--Grey-grey-800, #383E49);
   font-family: sans-serif;
   font-size: 20px;
@@ -80,6 +79,7 @@
 }
 
 .nombre{
+width: 200px;
 color: var(--Grey-grey-700, #48505E);
 font-family: sans-serif;
 font-size: 18px;
@@ -91,9 +91,26 @@ opacity: 0.8;
 
 .input{
 display: flex;
-width: 240px;
+max-width: 240px;
+min-width: 240px;
 padding: 10px 14px;
-margin-left: auto;
+align-items: center;
+gap: 8px;
+border-radius: 8px;
+border: 1px solid var(--Gray-300, #D0D5DD);
+background: var(--White, #FFF);
+box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+font-size: 18px;
+font-family: sans-serif;
+color: rgba(0, 0, 0, .6);
+}
+
+.input2{
+display: flex;
+max-width: 240px;
+min-width: 240px;
+margin-left: -35px;
+padding: 10px 14px;
 align-items: center;
 gap: 8px;
 border-radius: 8px;
@@ -114,7 +131,7 @@ color: rgba(0, 0, 0, 0.425);
   display: flex;
   align-items: center;
   justify-content: end;
-  margin-top: 20px;
+
   gap: 20px;
   width: 100%;
   height: 40px;
@@ -161,9 +178,9 @@ cursor: pointer;
 
 select{
 display: flex;
-width: 240px;
+max-width: 300px;
+min-width: 200px;
 padding: 10px 14px;
-margin-left: auto;
 align-items: center;
 gap: 8px;
 border-radius: 8px;
@@ -178,3 +195,66 @@ color: rgba(0, 0, 0, .6);
 select:hover{
   cursor: pointer;
 }
+
+.form-banner{
+  width: 100px;
+  height:40px;
+}
+
+.separador{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 450px;
+  height: 100%;
+  padding: 20px;
+  gap: 20px;
+
+}
+
+.divisor{
+  width: 600px;
+  height: 100%;
+}
+
+.divisor2{
+  width: 600px;
+  height: 100%;
+}
+
+
+  .filter-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: 238px;
+    height: 43px;
+    padding: .4rem 1.2rem;
+    border-radius: 6px;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.05px;
+    opacity: .9;
+    transition: var(--tran-040);
+  
+  }
+
+    .filter-element:hover{
+    background-color: var(--primary-color);
+    color:rgb(79, 79, 236);
+    fill: #FFF;
+    cursor: pointer;
+    transition: var(--tran-040);
+    border-radius: 4px;
+    background: #c1d3ff;
+    width: 238px;
+    height: 43px;
+    flex-shrink: 0;
+    
+  }

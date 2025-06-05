@@ -13,15 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 
-  </head>
+</head>
+<script src="../js/equipos.js"></script>
 
 <body>
-    <?php include_once '../include/navigation.php'; ?>
+   
 
     <div class="contenedor"> <!-- Cuerpo contenedor de todo -->
 
         <div class="header"> <!-- Titulo de la pagina -->
-          <h1 class="titulo">Equipos</h1>
+          <h1 class="titulo">Inventario</h1>
         </div>
 
         <div class="filtros"> <!-- Cuerpo de los filtros -->
@@ -54,20 +55,13 @@
         </div>
 
 <?php
-require_once '../models/equipos-controller.php'; // SOLUCIÓN: Usar la función que SÍ funciona
-
-$equipos = obtenerEquiposAlternativa(); // Usar la función alternativa que crea su propia conexión
-
-echo "<!-- DEBUG: Número de equipos encontrados: " . count($equipos) . " -->"; // DEBUG: Mostrar información para debugging
-if (empty($equipos)) {
-    echo "<!-- DEBUG: No se encontraron equipos. Verificar base de datos y tablas -->";
-}
+require_once '../models/equipos-controller.php';
 ?>
 
   <main class="tabla-principal"> <!-- Cuerpo del contenedor de la tabla entera -->
     <div class="tabla-wrapper">
 
-      <table class="tabla-header"> <!-- Encabezado de la tabla (sin cambios) -->
+      <table class="tabla-header"> <!-- Encabezado de la tabla -->
         <thead>
           <tr>
             <th class="th">ID</th>
@@ -86,14 +80,13 @@ if (empty($equipos)) {
         <tbody>
                 
 <?php 
-  // Verificar si hay equipos para mostrar
-  if (!empty($equipos))  {
-  // Recorrer cada equipo y crear una fila
-  foreach ($equipos as $equipo) {
-  // Obtener la clase CSS para el estado
-  $claseEstado = obtenerClaseEstado($equipo['estado']);
+if (!empty($equiposPagina)) {
+    // Recorrer cada equipo de la página actual
+    foreach ($equiposPagina as $equipo) {
+        // Obtener la clase CSS para el estado
+        $claseEstado = obtenerClaseEstado($equipo['estado']);
 ?>
-      <tr class="tr">
+      <tr class="tr" id="fila-equipo-<?php echo $equipo['id']; ?>">
         <td><?php echo htmlspecialchars($equipo['id']); ?></td>
         <td><?php echo htmlspecialchars($equipo['tipo_equipo']); ?></td>
         <td><?php echo htmlspecialchars($equipo['marca']); ?></td>
@@ -107,44 +100,121 @@ if (empty($equipos)) {
         </td>
 
         <td>
-          <div class="btn-group">
-              <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)">
-                <img src="../img/pincel.png" width="24px" height="25px" class="img">
+          <div class="btn-group" id="equipo-<?php echo $equipo['id']; ?>">
+              <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para editar equipo -->
+                  <img src="../img/pincel.png" width="24px" height="25px" class="img">
               </button>
 
-              <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)">
-                <img src="../img/basura.png" width="23px" height="25px" class="img">
+              <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para eliminar equipo -->
+                  <img src="../img/basura.png" width="23px" height="25px" class="img">
               </button>
           </div>
         </td>
       </tr>
 <?php
-  }
-    } else {
-      // Si no hay equipos, mostrar mensaje
-        ?>
+    }
+} else {
+    // Si no hay equipos, mostrar mensaje
+?>
           <tr class="tr">
-            <td colspan="7" style="text-align: center;">
-              No hay equipos registrados o hay un problema con la base de datos
+            <td colspan="7" class="tabla-vacia">
+              <?php if ($totalEquipos == 0): ?>
+                No hay equipos registrados o hay un problema con la base de datos
+              <?php else: ?>
+                No hay equipos para mostrar en esta página
+              <?php endif; ?>
             </td>
           </tr>
-  <?php } ?>
+<?php } ?>
               </tbody>
             </table>
           </div>
+          
+          <!-- Contenedor de paginación -->
+          <?php if ($totalPaginas > 1): ?>
+          <div class="paginacion-container">
+            <div class="paginacion-info">
+              <?php 
+              if ($totalEquipos > 0) {
+                  $inicio = $offset + 1;
+                  $fin = min($offset + $filasPorPagina, $totalEquipos);
+                  echo "Mostrando $inicio-$fin de $totalEquipos equipos";
+              } else {
+                  echo "No hay equipos para mostrar";
+              }
+              ?>
+            </div>
+            
+            <div class="paginacion-controles">
+              <?php
+              // Función para construir URL con parámetros
+              function construirUrl($pagina) {
+                  $params = $_GET;
+                  $params['pagina'] = $pagina;
+                  return '?' . http_build_query($params);
+              }
+              
+              // Botón Anterior
+              if ($paginaActual > 1): ?>
+                <a href="<?php echo construirUrl($paginaActual - 1); ?>" class="paginacion-btn">‹ Anterior</a>
+              <?php else: ?>
+                <span class="paginacion-btn deshabilitado">‹ Anterior</span>
+              <?php endif;
+              
+              // Lógica para mostrar números de página
+              $maxBotones = 5;
+              $inicio = max(1, $paginaActual - floor($maxBotones / 2));
+              $fin = min($totalPaginas, $inicio + $maxBotones - 1);
+              
+              // Ajustar el inicio si no hay suficientes páginas al final
+              if ($fin - $inicio < $maxBotones - 1) {
+                  $inicio = max(1, $fin - $maxBotones + 1);
+              }
+              
+              // Primera página y puntos suspensivos
+              if ($inicio > 1) {
+                  echo '<a href="' . construirUrl(1) . '" class="paginacion-btn">1</a>';
+                  if ($inicio > 2) {
+                      echo '<span class="paginacion-puntos">...</span>';
+                  }
+              }
+              
+              // Páginas numeradas
+              for ($i = $inicio; $i <= $fin; $i++) {
+                  if ($i == $paginaActual) {
+                      echo '<span class="paginacion-btn activo">' . $i . '</span>';
+                  } else {
+                      echo '<a href="' . construirUrl($i) . '" class="paginacion-btn">' . $i . '</a>';
+                  }
+              }
+              
+              // Última página y puntos suspensivos
+              if ($fin < $totalPaginas) {
+                  if ($fin < $totalPaginas - 1) {
+                      echo '<span class="paginacion-puntos">...</span>';
+                  }
+                  echo '<a href="' . construirUrl($totalPaginas) . '" class="paginacion-btn">' . $totalPaginas . '</a>';
+              }
+              
+              // Botón Siguiente
+              if ($paginaActual < $totalPaginas): ?>
+                <a href="<?php echo construirUrl($paginaActual + 1); ?>" class="paginacion-btn">Siguiente ›</a>
+              <?php else: ?>
+                <span class="paginacion-btn deshabilitado">Siguiente ›</span>
+              <?php endif; ?>
+            </div>
+          </div>
+          <?php endif; ?>
+          
         </div>
-
   </main>
 
-          <?php include_once '../include/modal-filtro-equipo.php'; ?> <!-- cuerpo de modal-filtro-equipo -->
-          <?php include_once '../include/modal-filtro-marca.php'; ?> <!-- cuerpo de modal-filtro-marca -->
-          <?php include_once '../include/modal-filtro-estado.php'; ?> <!-- cuerpo de modal-filtro-estado -->
-          <?php include_once '../include/equipos-form.php'; ?> <!-- cuerpo de equipos-form -->
-
+          <?php include_once '../include/modales-equipo.php'; ?>
+          <?php include_once '../include/equipos-form.php'; ?>
 
     </div>
 
-<script src="../js/equipos.js"></script>
+ <?php include_once '../include/navigation.php'; ?>
 
 </body>
 </html>
