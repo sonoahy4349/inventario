@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Configuración de paginación
-$filasPorPagina = 10; // Puedes cambiar este número
+$filasPorPagina = 11; // Puedes cambiar este número
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $paginaActual = max(1, $paginaActual); // Asegurar que no sea menor a 1
 $offset = ($paginaActual - 1) * $filasPorPagina;

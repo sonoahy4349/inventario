@@ -20,13 +20,6 @@
       </li>
 
       <li class="sidebar-element">
-        <a href="../views/tickets.php" class="sidebar-link">
-          <img src="../assets/cupon.svg" class="sidebar-icono" alt="Icono Inicio">
-          <span class="sidebar-text">Tickets</span>
-        </a>
-      </li>
-
-      <li class="sidebar-element">
         <a href="#" class="sidebar-link">
           <img src="../assets/estadisticas.svg" class="sidebar-icono" alt="Icono Estadisticas">
           <span class="sidebar-text">Estadisticas</span>
@@ -44,6 +37,20 @@
         <a href="../views/estaciones.php" class="sidebar-link">
           <img src="../img/estaciones.png" class="sidebar-icono" alt="Icono Inicio">
           <span class="sidebar-text">Estaciones</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
+        <a href="../views/responsables.php" class="sidebar-link">
+          <img src="../img/laptop.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Laptops</span>
+        </a>
+      </li>
+
+      <li class="sidebar-element">
+        <a href="../views/responsables.php" class="sidebar-link">
+          <img src="../img/printer.png" class="sidebar-icono" alt="Icono Inicio">
+          <span class="sidebar-text">Impresoras</span>
         </a>
       </li>
 
@@ -67,6 +74,7 @@
           <span class="sidebar-text">Responsables</span>
         </a>
       </li>
+
 
       <li class="sidebar-element sidebar-footer--ele">
         <a href="#" class="sidebar-link">

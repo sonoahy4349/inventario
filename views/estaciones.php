@@ -45,6 +45,7 @@
                 <p class="filtro-texto-rojo">Reiniciar filtro</p>
 
                 <button class="btn-imprimir" id="btn-imprimir">Imprimir lista</button>
+                <button class="btn-agregar" id="btn-editar">Editar estación</button>
                 <button class="btn-agregar" id="btn-agregar">Agregar estación</button>
             </div>
         </div>
