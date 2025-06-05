@@ -22,7 +22,7 @@
     <div class="contenedor"> <!-- Cuerpo contenedor de todo -->
 
         <div class="header"> <!-- Titulo de la pagina -->
-          <h1 class="titulo">Equipos</h1>
+          <h1 class="titulo">Inventario</h1>
         </div>
 
         <div class="filtros"> <!-- Cuerpo de los filtros -->

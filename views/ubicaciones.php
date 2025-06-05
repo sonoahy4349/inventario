@@ -239,8 +239,9 @@ if ($result->num_rows > 0) {
             <?php endif; ?>
             
         </div>
-         <?php include_once '../include/ubicaciones-form.php'; ?>
+         
       </main>
+      <?php include_once '../include/ubicaciones-form.php'; ?>
     </div>
 
   <script>

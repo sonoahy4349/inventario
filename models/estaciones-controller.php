@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         
         if ($stmt->execute()) {
-            echo "<script>alert('Estación agregada exitosamente'); window.location.href='../pages/estaciones.php';</script>";
+            echo "<script>alert('Estación agregada exitosamente'); window.location.href='../views/estaciones.php';</script>";
         } else {
             echo "<script>alert('Error al agregar la estación: " . $conn->error . "'); window.history.back();</script>";
         }

@@ -1,6 +1,6 @@
 .container-form {
   z-index: 1000; /* Asegura que el formulario esté por encima de otros elementos */
-  margin-top: -790px; 
+  margin-top: -890px; 
   margin-left: 400px;
   display: flex;
   flex-direction: column;

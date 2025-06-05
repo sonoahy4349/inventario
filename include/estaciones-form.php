@@ -97,11 +97,34 @@
       </div>
       </div> <!-- Fin del divisor para Equipo Secundario -->
 
-      <div class="divisor">
+
+
+      <div class="divisor2">
+
+      <!-- Fin del divisor para Equipo Secundario -->
+      <ul class="filter-list">
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox1">
+          <label for="checkbox1" class="checkbox-label">Teclado</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox2">
+          <label for="checkbox2" class="checkbox-label">Mouse</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox3">
+          <label for="checkbox3" class="checkbox-label">Cable de red</label>
+        </li>
+        <li class="filter-element">
+          <input type="checkbox" class="checkbox" id="checkbox4">
+          <label for="checkbox4" class="checkbox-label">Office</label>
+        </li>
+      </ul>
+      
       <!-- Ubicación Interna -->
       <div class="form-group">
         <label for="ubicacion_id" class="nombre">Ubicación Interna</label>
-        <select id="ubicacion_id" name="ubicacion_id" class="select" required>
+        <select id="ubicacion_id" name="ubicacion_id" required>
           <option value="" disabled selected>Selecciona una ubicación</option>
           <?php
           $sql = "SELECT u.id, 
@@ -121,20 +144,22 @@
         </select>
       </div>
 
+
+
       <!-- Información de Ubicación (campos auto-rellenados) -->
       <div class="form-group">
         <label class="nombre">Edificio</label>
-        <input type="text" id="edificio_info" class="input2" readonly>
+        <input type="text" id="edificio_info" class="input" readonly>
       </div>
 
       <div class="form-group">
         <label class="nombre">Planta</label>
-        <input type="text" id="planta_info" class="input2" readonly>
+        <input type="text" id="planta_info" class="input" readonly>
       </div>
 
       <div class="form-group">
         <label class="nombre">Servicio</label>
-        <input type="text" id="servicio_info" class="input2" readonly>
+        <input type="text" id="servicio_info" class="input" readonly>
       </div>
 
       <!-- Responsable -->
@@ -158,8 +183,10 @@
       <!-- Información del Responsable (campos auto-rellenados) -->
       <div class="form-group">
         <label class="nombre">Cargo del Responsable</label>
-        <input type="text" id="cargo_responsable" class="input2" readonly>
+        <input type="text" id="cargo_responsable" class="input" readonly>
       </div>
+
+
 
       <div class="btn-group-form">
         <button type="button" id="btn-cancelar" class="btn-cancelar">Cancelar</button>

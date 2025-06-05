@@ -138,7 +138,7 @@
                             if ($result->num_rows > 0) {
                                 $contador = 1;
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<tr class='tr small' id='fila-equipo-".$row['estacion_id']."'>";
+                                    echo "<tr class='tr small fila-ajustada' id='fila-equipo-".$row['estacion_id']."'>";
                                     echo "<td>".$contador."</td>";
                                     
                                     // Equipo principal
@@ -175,8 +175,9 @@
                     </table>
                 </div>
             </div>
-                <?php include '../include/estaciones-form.php'; ?> <!-- Incluye el footer de la pagina -->
+                
         </main>
+        <?php include '../include/estaciones-form.php'; ?> <!-- Incluye el footer de la pagina -->
     </div>
 
    <script>

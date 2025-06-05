@@ -206,6 +206,23 @@ th, td {
   background-color: #D5D5D5;
 }
 
+.fila-ajustada > td {
+  height: 50px !important;
+  max-height: 50px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+  padding: 0 !important;
+  vertical-align: middle;
+  width: 60px !important; /* Ajusta el ancho según sea necesario */
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+
 
 /* Estilo para acciones */
 .btn-group{

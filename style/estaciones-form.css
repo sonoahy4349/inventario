@@ -1,6 +1,6 @@
 .container-form {
   z-index: 1000; /* Asegura que el formulario esté por encima de otros elementos */
-  margin-top: -420px; 
+  margin-top: -920px; 
   margin-left: 75px;
   display: flex;
   flex-direction: column;
@@ -79,7 +79,7 @@
 }
 
 .nombre{
-width: 240px;
+width: 200px;
 color: var(--Grey-grey-700, #48505E);
 font-family: sans-serif;
 font-size: 18px;
@@ -93,7 +93,6 @@ opacity: 0.8;
 display: flex;
 max-width: 240px;
 min-width: 240px;
-margin-left: -55px;
 padding: 10px 14px;
 align-items: center;
 gap: 8px;
@@ -132,7 +131,7 @@ color: rgba(0, 0, 0, 0.425);
   display: flex;
   align-items: center;
   justify-content: end;
-  margin-top: 190px;
+
   gap: 20px;
   width: 100%;
   height: 40px;
@@ -179,10 +178,9 @@ cursor: pointer;
 
 select{
 display: flex;
-max-height: 200px;
+max-width: 300px;
 min-width: 200px;
 padding: 10px 14px;
-margin-left: auto;
 align-items: center;
 gap: 8px;
 border-radius: 8px;
@@ -219,3 +217,44 @@ select:hover{
   width: 600px;
   height: 100%;
 }
+
+.divisor2{
+  width: 600px;
+  height: 100%;
+}
+
+
+  .filter-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: 238px;
+    height: 43px;
+    padding: .4rem 1.2rem;
+    border-radius: 6px;
+    color: #202224;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.05px;
+    opacity: .9;
+    transition: var(--tran-040);
+  
+  }
+
+    .filter-element:hover{
+    background-color: var(--primary-color);
+    color:rgb(79, 79, 236);
+    fill: #FFF;
+    cursor: pointer;
+    transition: var(--tran-040);
+    border-radius: 4px;
+    background: #c1d3ff;
+    width: 238px;
+    height: 43px;
+    flex-shrink: 0;
+    
+  }

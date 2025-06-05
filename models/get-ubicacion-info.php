@@ -9,11 +9,13 @@ if (isset($_GET['id'])) {
     $sql = "SELECT 
                 ed.nombre as edificio,
                 p.nombre as planta,
-                s.nombre as servicio
+                COALESCE(s.nombre, 'Sin servicio') as servicio,
+                ui.nombre as ubicacion_interna
             FROM ubicaciones u
             LEFT JOIN edificios ed ON u.edificio_id = ed.id
             LEFT JOIN plantas p ON u.planta_id = p.id
             LEFT JOIN servicios s ON u.servicio_id = s.id
+            LEFT JOIN ubicaciones_internas ui ON u.ubicacion_interna_id = ui.id
             WHERE u.id = ?";
     
     $stmt = $conn->prepare($sql);
@@ -33,3 +35,4 @@ if (isset($_GET['id'])) {
 }
 
 $conn->close();
+?>
