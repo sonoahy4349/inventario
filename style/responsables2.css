@@ -346,14 +346,27 @@ line-height: normal;
   display: none;
 }
 
-   /* Estilos para la paginación */
+        /* Estilos para filtros mejorados */
+        .filtro-select, .filtro-input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+
+        .filtro-input {
+            min-width: 200px;
+        }
+
+        /* Estilos para la paginación */
         .paginacion-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
             border-top: 1px solid #eee;
-            padding-top: 5px;
+            padding-top: 15px;
             width: 85%;
         }
         
@@ -381,6 +394,7 @@ line-height: normal;
             display: inline-block;
             min-width: 35px;
             text-align: center;
+            cursor: pointer;
         }
         
         .paginacion-btn:hover {
@@ -439,4 +453,13 @@ line-height: normal;
                 font-size: 13px;
                 min-width: 30px;
             }
-}
+        }
+
+        .reiniciar-filtro {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .reiniciar-filtro:hover {
+            opacity: 0.7;
+        }

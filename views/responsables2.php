@@ -189,43 +189,64 @@
                 return;
             }
 
-            let paginacionHTML = '<div class="controles-paginacion">';
+            let paginacionHTML = '<div class="paginacion-container">';
             
-            // Botón anterior
+            // Información de registros
+            paginacionHTML += `<div class="paginacion-info">Mostrando ${Math.min((paginaActualParam - 1) * registrosPorPagina + 1, totalRegistros)} - ${Math.min(paginaActualParam * registrosPorPagina, totalRegistros)} de ${totalRegistros} registros</div>`;
+            
+            // Controles de paginación
+            paginacionHTML += '<div class="paginacion-controles">';
+            
+            // Botón Anterior
             if (paginaActualParam > 1) {
-                paginacionHTML += `<button class="btn-paginacion" onclick="cambiarPagina(${paginaActualParam - 1})">‹ Anterior</button>`;
+                paginacionHTML += `<a href="#" class="paginacion-btn" onclick="cambiarPagina(${paginaActualParam - 1}); return false;">‹ Anterior</a>`;
+            } else {
+                paginacionHTML += '<span class="paginacion-btn deshabilitado">‹ Anterior</span>';
             }
 
-            // Números de página
-            let inicio = Math.max(1, paginaActualParam - 2);
-            let fin = Math.min(totalPaginas, paginaActualParam + 2);
-
+            // Lógica para mostrar números de página
+            const maxBotones = 5;
+            let inicio = Math.max(1, paginaActualParam - Math.floor(maxBotones / 2));
+            let fin = Math.min(totalPaginas, inicio + maxBotones - 1);
+            
+            // Ajustar el inicio si no hay suficientes páginas al final
+            if (fin - inicio < maxBotones - 1) {
+                inicio = Math.max(1, fin - maxBotones + 1);
+            }
+            
+            // Primera página y puntos suspensivos
             if (inicio > 1) {
-                paginacionHTML += `<button class="btn-paginacion" onclick="cambiarPagina(1)">1</button>`;
+                paginacionHTML += `<a href="#" class="paginacion-btn" onclick="cambiarPagina(1); return false;">1</a>`;
                 if (inicio > 2) {
-                    paginacionHTML += '<span class="puntos-paginacion">...</span>';
+                    paginacionHTML += '<span class="paginacion-puntos">...</span>';
                 }
             }
-
+            
+            // Páginas numeradas
             for (let i = inicio; i <= fin; i++) {
-                const clase = i === paginaActualParam ? 'btn-paginacion activo' : 'btn-paginacion';
-                paginacionHTML += `<button class="${clase}" onclick="cambiarPagina(${i})">${i}</button>`;
+                if (i === paginaActualParam) {
+                    paginacionHTML += `<span class="paginacion-btn activo">${i}</span>`;
+                } else {
+                    paginacionHTML += `<a href="#" class="paginacion-btn" onclick="cambiarPagina(${i}); return false;">${i}</a>`;
+                }
             }
-
+            
+            // Última página y puntos suspensivos
             if (fin < totalPaginas) {
                 if (fin < totalPaginas - 1) {
-                    paginacionHTML += '<span class="puntos-paginacion">...</span>';
+                    paginacionHTML += '<span class="paginacion-puntos">...</span>';
                 }
-                paginacionHTML += `<button class="btn-paginacion" onclick="cambiarPagina(${totalPaginas})">${totalPaginas}</button>`;
+                paginacionHTML += `<a href="#" class="paginacion-btn" onclick="cambiarPagina(${totalPaginas}); return false;">${totalPaginas}</a>`;
             }
-
-            // Botón siguiente
+            
+            // Botón Siguiente
             if (paginaActualParam < totalPaginas) {
-                paginacionHTML += `<button class="btn-paginacion" onclick="cambiarPagina(${paginaActualParam + 1})">Siguiente ›</button>`;
+                paginacionHTML += `<a href="#" class="paginacion-btn" onclick="cambiarPagina(${paginaActualParam + 1}); return false;">Siguiente ›</a>`;
+            } else {
+                paginacionHTML += '<span class="paginacion-btn deshabilitado">Siguiente ›</span>';
             }
 
-            paginacionHTML += '</div>';
-            paginacionHTML += `<div class="info-paginacion">Mostrando ${Math.min((paginaActualParam - 1) * registrosPorPagina + 1, totalRegistros)} - ${Math.min(paginaActualParam * registrosPorPagina, totalRegistros)} de ${totalRegistros} registros</div>`;
+            paginacionHTML += '</div></div>';
 
             contenedorPaginacion.innerHTML = paginacionHTML;
         }
@@ -283,94 +304,6 @@
             }
         }
     </script>
-
-      <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const btnAbrir = document.getElementById("btn-agregar-responsable");
-    const btnCancelar = document.getElementById("btn-cancelar");
-    const modal = document.querySelector(".container-form");
-
-    btnAbrir.addEventListener("click", function () {
-      modal.classList.remove("hidden");
-    });
-
-    btnCancelar.addEventListener("click", function () {
-      modal.classList.add("hidden");
-    });
-  });
-</script>
-
-    <style>
-        /* Estilos para filtros mejorados */
-        .filtro-select, .filtro-input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            margin: 0 5px;
-        }
-
-        .filtro-input {
-            min-width: 200px;
-        }
-
-        /* Estilos para paginación */
-        .paginacion {
-            display: flex;
-            width: 85%;;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding: 15px 0;
-        }
-
-        .controles-paginacion {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-
-        .btn-paginacion {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            color: #333;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-paginacion:hover {
-            background: #f5f5f5;
-            border-color: #999;
-        }
-
-        .btn-paginacion.activo {
-            background: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .puntos-paginacion {
-            padding: 8px 4px;
-            color: #666;
-        }
-
-        .info-paginacion {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .reiniciar-filtro {
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .reiniciar-filtro:hover {
-            opacity: 0.7;
-        }
-    </style>
  
 </body>
 </html>
