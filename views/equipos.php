@@ -19,7 +19,7 @@
 <body>
    
 
-    <div class="contenedor"> <!-- Cuerpo contenedor de todo -->
+    <div class="contenedor"> <!-- Cuerpo contenedor de todo --> 
 
         <div class="header"> <!-- Titulo de la pagina -->
           <h1 class="titulo">Inventario</h1>

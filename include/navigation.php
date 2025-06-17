@@ -69,7 +69,7 @@
       </li>
 
       <li class="sidebar-element">
-        <a href="../views/responsables.php" class="sidebar-link">
+        <a href="../views/responsables2.php" class="sidebar-link">
           <img src="../assets/usuarios.svg" class="sidebar-icono" alt="Icono Inicio">
           <span class="sidebar-text">Responsables</span>
         </a>
