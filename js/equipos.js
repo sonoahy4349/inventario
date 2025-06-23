@@ -1,3 +1,36 @@
+ // funcion eliminar equipo 
+ 
+ function eliminarEquipo(id) {
+    if (!confirm("¿Estás seguro de que deseas eliminar este equipo?")) return;
+
+    const formData = new FormData();
+    formData.append("accion", "eliminar");
+    formData.append("id", id);
+
+    fetch("../models/equipos-controller.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const div = document.getElementById("equipo-" + id);
+            if (div) div.remove();
+            alert("Equipo eliminado correctamente.");
+            location.reload();
+        } else {
+            console.error(data.error);
+            alert("Ocurrió un error al eliminar el equipo.");
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud:", error);
+        alert("Fallo de conexión.");
+    });
+}
+
+ 
+ 
  document.addEventListener('DOMContentLoaded', () => {
   // Primer modal (filtro equipos)
   const modal = document.getElementById('modal');
@@ -51,3 +84,4 @@
     form.classList.add('hidden');
   });
 });
+

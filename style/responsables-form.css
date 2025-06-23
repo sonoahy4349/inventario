@@ -1,7 +1,7 @@
 
 .container-form {
   z-index: 1000;
-  margin-top: -900px; 
+   margin-top: -630px; 
   margin-left: 400px;
   display: flex;
   flex-direction: column;
@@ -30,10 +30,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 450px;
-  height: 100%;
-  padding: 20px;
+  width: 390px;
+  height: 520px;
   gap: 20px;
+  padding: 20px 0px;
 }
 
 .h1-form {
@@ -91,7 +91,8 @@ opacity: 0.8;
 
 .input{
 display: flex;
-width: 240px;
+max-width: 240px;
+min-width: 240px;
 padding: 10px 14px;
 margin-left: auto;
 align-items: center;
@@ -161,7 +162,8 @@ cursor: pointer;
 
 select{
 display: flex;
-width: 240px;
+min-width: 240px;
+max-width: 240px;
 padding: 10px 14px;
 margin-left: auto;
 align-items: center;

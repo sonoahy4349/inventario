@@ -303,3 +303,51 @@
     font-weight: 700;
     line-height: normal;
 }
+
+/* Estilos adicionales para la gráfica - Agregar a tu inicio.css */
+
+.card-grafica {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.grafica-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    padding: 20px;
+}
+
+.card-grafica .card-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+}
+
+.card-grafica .card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive para la gráfica */
+@media (max-width: 768px) {
+    .grafica-container {
+        height: 300px;
+        padding: 15px;
+    }
+}
+
+/* Animación para las cards */
+.card, .card-usuarios, .card-grafica, .card-movimientos {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover, .card-usuarios:hover, .card-grafica:hover, .card-movimientos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
