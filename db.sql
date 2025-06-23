@@ -322,3 +322,166 @@ UPDATE estaciones SET equipo_principal_id = 6 WHERE id = 3;
 
 INSERT INTO equipo_tipo (nombre, descripcion) VALUES 
 ('Monitor', 'Dispositivo de visualizacion');
+
+CREATE TABLE IF NOT EXISTS `notas_equipos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `equipo_id` int NOT NULL,
+  `usuario_id` int NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_creacion` date NOT NULL,
+  `hora_creacion` time NOT NULL,
+  `fecha_actualizacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `equipo_id` (`equipo_id`),
+  KEY `usuario_id` (`usuario_id`),
+  KEY `fecha_creacion` (`fecha_creacion`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Ejemplo de cómo insertar una nota (puedes usarlo como referencia)
+INSERT INTO `notas_equipos` (`equipo_id`, `usuario_id`, `titulo`, `descripcion`, `fecha_creacion`, `hora_creacion`) 
+VALUES (1, 1, 'Mantenimiento preventivo', 'Se realizó limpieza general del equipo y actualización de drivers', CURDATE(), CURTIME());
+
+
+<?php
+// ====== ajax/get_notas_equipo.php ======
+<?php
+include '../models/conexion.php'; 
+
+header('Content-Type: application/json');
+
+$equipo_id = isset($_GET['equipo_id']) ? (int)$_GET['equipo_id'] : 0;
+
+if ($equipo_id <= 0) {
+    echo json_encode(['success' => false, 'message' => 'ID de equipo inválido']);
+    exit;
+}
+
+try {
+    $sql = "SELECT n.*, u.nombre_completo as nombre_usuario, e.numero_serie 
+            FROM notas_equipos n 
+            INNER JOIN usuarios u ON n.usuario_id = u.id 
+            INNER JOIN equipos e ON n.equipo_id = e.id 
+            WHERE n.equipo_id = ? 
+            ORDER BY n.fecha_creacion DESC, n.hora_creacion DESC";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $equipo_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $notas = [];
+    while ($row = $result->fetch_assoc()) {
+        $notas[] = $row;
+    }
+    
+    echo json_encode(['success' => true, 'notas' => $notas]);
+    
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Error al obtener las notas: ' . $e->getMessage()]);
+}
+?>
+
+<?php
+// ====== ajax/get_nota_detalle.php ======
+<?php
+include '../models/conexion.php'; 
+
+header('Content-Type: application/json');
+
+$nota_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+if ($nota_id <= 0) {
+    echo json_encode(['success' => false, 'message' => 'ID de nota inválido']);
+    exit;
+}
+
+try {
+    $sql = "SELECT n.*, u.nombre_completo as nombre_usuario, e.numero_serie 
+            FROM notas_equipos n 
+            INNER JOIN usuarios u ON n.usuario_id = u.id 
+            INNER JOIN equipos e ON n.equipo_id = e.id 
+            WHERE n.id = ?";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $nota_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($nota = $result->fetch_assoc()) {
+        echo json_encode(['success' => true, 'nota' => $nota]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Nota no encontrada']);
+    }
+    
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Error al obtener la nota: ' . $e->getMessage()]);
+}
+?>
+
+<?php
+// ====== ajax/save_nota_equipo.php ======
+<?php
+include '../models/conexion.php'; 
+
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+    exit;
+}
+
+$equipo_id = isset($_POST['equipo_id']) ? (int)$_POST['equipo_id'] : 0;
+$usuario_id = isset($_POST['usuario_id']) ? (int)$_POST['usuario_id'] : 0;
+$titulo = isset($_POST['titulo']) ? trim($_POST['titulo']) : '';
+$descripcion = isset($_POST['descripcion']) ? trim($_POST['descripcion']) : '';
+
+// Validaciones
+if ($equipo_id <= 0) {
+    echo json_encode(['success' => false, 'message' => 'ID de equipo inválido']);
+    exit;
+}
+
+if ($usuario_id <= 0) {
+    echo json_encode(['success' => false, 'message' => 'ID de usuario inválido']);
+    exit;
+}
+
+if (empty($titulo)) {
+    echo json_encode(['success' => false, 'message' => 'El título es requerido']);
+    exit;
+}
+
+try {
+    // Verificar que el equipo existe
+    $sql_check = "SELECT id FROM equipos WHERE id = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("i", $equipo_id);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+    
+    if ($result_check->num_rows === 0) {
+        echo json_encode(['success' => false, 'message' => 'El equipo no existe']);
+        exit;
+    }
+    
+    // Insertar la nueva nota
+    $sql = "INSERT INTO notas_equipos (equipo_id, usuario_id, titulo, descripcion, fecha_creacion, hora_creacion) 
+            VALUES (?, ?, ?, ?, CURDATE(), CURTIME())";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiss", $equipo_id, $usuario_id, $titulo, $descripcion);
+    
+    if ($stmt->execute()) {
+        echo json_encode(['success' => true, 'message' => 'Nota guardada exitosamente', 'id' => $conn->insert_id]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error al guardar la nota']);
+    }
+    
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Error en la base de datos: ' . $e->getMessage()]);
+}
+?>
+ALTER TABLE `notas_equipos` 
+ADD CONSTRAINT `fk_notas_equipo` FOREIGN KEY (`equipo_id`) REFERENCES `equipos` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `fk_notas_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;

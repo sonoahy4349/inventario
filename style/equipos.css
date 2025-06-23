@@ -239,6 +239,17 @@ th, td {
   outline: none;
 }
 
+.btn-centro{
+  background: #FAFBFD;
+  border: solid 1px #D5D5D5;
+  padding: 2px 10px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
 .btn-izq:hover {
   background: #D5D5D5;
 }
@@ -247,6 +258,9 @@ th, td {
   background: #D5D5D5;
 }
 
+.btn-centro:hover {
+  background: #D5D5D5;
+}
 .img {
     display: flex;
     justify-content: center;

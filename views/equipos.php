@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/equipos.css"> <!-- Estilos de filtros y tablas -->
     <link rel="stylesheet" href="../style/modal-filtro-equipo.css"> <!-- Estilo de modales  -->
     <link rel="stylesheet" href="../style/equipos-form.css"> <!-- Estilo de formulario  -->
+    <link rel="stylesheet" href="../style/modal_notas.css"> <!-- Estilo de formulario  -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,6 +104,10 @@ if (!empty($equiposPagina)) {
           <div class="btn-group" id="equipo-<?php echo $equipo['id']; ?>">
               <button class="btn-izq" onclick="editarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para editar equipo -->
                   <img src="../img/pincel.png" width="24px" height="25px" class="img">
+              </button>
+
+              <button class="btn-centro" onclick="openNotasModal(<?php echo $equipo['id']; ?>)"> <!-- boton para ver notas --> <!-- boton para ver notas -->
+                  <img src="../img/glasses (1).png" width="23px" height="25px" class="img">
               </button>
 
               <button class="btn-der" onclick="eliminarEquipo(<?php echo $equipo['id']; ?>)"> <!-- boton para eliminar equipo -->
@@ -211,6 +216,8 @@ if (!empty($equiposPagina)) {
 
           <?php include_once '../include/modales-equipo.php'; ?>
           <?php include_once '../include/equipos-form.php'; ?>
+          <?php include_once '../include/modal_notas.php'; ?>
+          
 
     </div>
 
